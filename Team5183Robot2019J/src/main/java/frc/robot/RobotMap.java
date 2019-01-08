@@ -1,7 +1,7 @@
 package frc.robot;
 
 import frc.robot.functions.DriveTrain;
-
+import frc.robot.functions.Xbox;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 //import edu.wpi.first.wpilibj.Compressor;
@@ -16,6 +16,7 @@ public class RobotMap {
 	
 	// Function Declarations
 	public static DriveTrain M = new DriveTrain();
+	public static Xbox ctrl = new Xbox();
 	
 	
 	// Motors
