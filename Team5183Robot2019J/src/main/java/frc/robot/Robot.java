@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 package frc.robot;
 
+import edu.wpi.first.wpilibj.RobotState;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -38,7 +39,7 @@ public class Robot extends TimedRobot {
 		m_chooser.addOption("Center Auton", "AutonCenter");
     m_chooser.addOption("Right Auton", "AutonRight");
     m_chooser.addOption("No Auton", "AutonNone");
-    m_chooser.addOption("Teleop", "Teleop");
+    m_chooser.addOption("Teleop Auton", "Teleop");
 		SmartDashboard.putData("Auton Chooser", m_chooser);
   }
 
@@ -64,14 +65,16 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {
     switch (m_autoSelected) { //TODO WRITE THE AUTONOMOUS
       case "Teleop": // For operator control during the auton period
-        break;
+        while (RobotState.isAutonomous()) {
+          RobotMap.M.drive(RobotMap.ctrl.R_X_STICK, RobotMap.ctrl.L_Y_STICK, 1);
+        }
       case "AutonLeft":
         break;
       case "AutonCenter":
         break;
       case "AutonRight":
         break;
-      case "AutonNone":
+      case "AutonNone": // Robot Does Nothing
         break;
       default:
         break;
@@ -82,6 +85,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
+    RobotMap.M.drive(RobotMap.ctrl.R_X_STICK, RobotMap.ctrl.L_Y_STICK, 1);
   }
 
   @Override
