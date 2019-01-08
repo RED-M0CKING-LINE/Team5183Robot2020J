@@ -38,9 +38,8 @@ public class Robot extends TimedRobot {
 		m_chooser.addOption("Center Auton", "AutonCenter");
     m_chooser.addOption("Right Auton", "AutonRight");
     m_chooser.addOption("No Auton", "AutonNone");
+    m_chooser.addOption("Teleop", "Teleop");
 		SmartDashboard.putData("Auton Chooser", m_chooser);
-		//TODO WRITE THE AUTON CODE AND THE CODE BASE FOR AUTON
-		
   }
 
   /**
@@ -52,20 +51,8 @@ public class Robot extends TimedRobot {
    * LiveWindow and SmartDashboard integrated updating.
    */
   @Override
-  public void robotPeriodic() {
-  }
+  public void robotPeriodic() {}
 
-  /**
-   * This autonomous (along with the chooser code above) shows how to s elect
-   * between different autonomous modes using the dashboard. The sendable
-   * chooser code works with the Java SmartDashboard. If you prefer the
-   * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-   * getString line to get the auto name from the text box below the Gyro
-   *
-   * <p>You can add additional auto modes by adding additional comparisons to
-   * the switch structure below with additional strings. If using the
-   * SendableChooser make sure to add them to the chooser code above as well.
-   */
   @Override
   public void autonomousInit() {
     m_autoSelected = m_chooser.getSelected();
@@ -73,12 +60,11 @@ public class Robot extends TimedRobot {
     System.out.println("Auton selected: " + m_autoSelected);
   }
 
-  /**
-   * This function is called periodically during autonomous.
-   */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
+    switch (m_autoSelected) { //TODO WRITE THE AUTONOMOUS
+      case "Teleop": // For operator control during the auton period
+        break;
       case "AutonLeft":
         break;
       case "AutonCenter":
@@ -90,19 +76,14 @@ public class Robot extends TimedRobot {
       default:
         break;
     }
+    RobotMap.M.stop(); // To stop the autonomous movement or teleop movement if it doesnt stop on its own. Prevents a period of uncontrollable movement.
+    //TODO FIGURE OUT THE LAG AND SEE HOW MUCH AN ISSUE THE STOP FUNCTION CAUSES AND WHETHER IT IS NEEDED.
   }
 
-  /**
-   * This function is called periodically during operator control.
-   */
   @Override
   public void teleopPeriodic() {
   }
 
-  /**
-   * This function is called periodically during test mode.
-   */
   @Override
-  public void testPeriodic() {
-  }
+  public void testPeriodic() {}
 }

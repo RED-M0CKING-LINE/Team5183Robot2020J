@@ -36,7 +36,7 @@ public class DriveTrain {
 		RobotMap.MOTORS_R.set(right);
 	}
 	
-	//TODO SETUP THE GYRO SUBSYSTEM
+	//TODO SETUP THE GYRO FUNCTION
 	/* This command is for turning of the robot based off gyro measurements
 	 * @param speed - how fast the robot should move
 	 * @param angle - what angle the robot should stop at
