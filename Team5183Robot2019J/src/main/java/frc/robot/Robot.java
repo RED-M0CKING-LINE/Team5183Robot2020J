@@ -40,7 +40,9 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("Right Auton", "AutonRight");
     m_chooser.addOption("No Auton", "AutonNone");
     m_chooser.addOption("Teleop Auton", "Teleop");
-		SmartDashboard.putData("Auton Chooser", m_chooser);
+    SmartDashboard.putData("Auton Chooser", m_chooser);
+    
+    
   }
 
   /**
