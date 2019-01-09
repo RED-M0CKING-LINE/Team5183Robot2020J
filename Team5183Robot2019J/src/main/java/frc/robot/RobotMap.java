@@ -18,8 +18,7 @@ public class RobotMap {
 	// Function Declarations
 	public static DriveTrain M = new DriveTrain();
 	public static Xbox ctrl = new Xbox();
-	public Camera cam0 = new Camera(0);
-	public Camera cam1 = new Camera(1);
+	public static Camera camera = new Camera();
 	
 	// Motors
 	public static Spark

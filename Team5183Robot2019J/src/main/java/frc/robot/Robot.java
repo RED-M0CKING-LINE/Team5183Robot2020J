@@ -42,7 +42,7 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("Teleop Auton", "Teleop");
     SmartDashboard.putData("Auton Chooser", m_chooser);
     
-    
+    RobotMap.camera.start();
   }
 
   /**
