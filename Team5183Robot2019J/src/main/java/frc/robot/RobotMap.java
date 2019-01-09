@@ -7,18 +7,11 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 //import edu.wpi.first.wpilibj.Compressor;
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
 public class RobotMap {
 	
 	// Function Declarations
 	public static DriveTrain M = new DriveTrain();
 	public static Xbox ctrl = new Xbox();
-	public static Camera camera = new Camera();
 	
 	// Motors
 	public static Spark
@@ -37,5 +30,9 @@ public class RobotMap {
 	public static final int 
 	cam0Width = 720,
 	cam0Height = 480,
-	cam0FPS = 15;
+	cam0FPS = 15,
+	cam0Exposure = 4;
+
+	// Start Camera Stream Systems
+	public static Camera camera0 = new Camera("Camera0", 0 , cam0Width, cam0Height, cam0FPS, cam0Exposure);
 }

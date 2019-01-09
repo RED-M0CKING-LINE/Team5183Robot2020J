@@ -18,7 +18,9 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
-
+  Thread CameraSwitch = new Thread(() -> {
+    
+  });
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -42,7 +44,7 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("Teleop Auton", "Teleop");
     SmartDashboard.putData("Auton Chooser", m_chooser);
     
-    RobotMap.camera.start();
+    RobotMap.camera0.start();
   }
 
   /**

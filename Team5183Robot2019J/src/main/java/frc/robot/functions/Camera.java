@@ -1,7 +1,5 @@
 package frc.robot.functions;
 
-import frc.robot.RobotMap;
-
 import edu.wpi.first.cameraserver.CameraServer;
 
 import org.opencv.core.Mat;
@@ -12,16 +10,31 @@ import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 
 
-public class Camera { //TODO MAKE WORK WITH A SECONDARY CAMERA AND USE THREAD FOR SWITCHING CAMERAS. INITALIZE CAMERAS BEFORE THE THREAD
+public class Camera {
+    Thread thread;
+    String CameraName;
+    int CameraNumber;
+    int ResWidth;
+    int ResHeight;
+    int FPS;
+    int Exposure;
 
-    public void start() {
-        new Thread(() -> {
-            UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("Camera0", 0);
-            camera.setResolution(720, 480);
-            camera.setFPS(RobotMap.cam0FPS);
+    public Camera(String cameraName, int cameraNumber, int width, int height, int fps, int exposure) {
+        this.CameraName = cameraName;
+        this.CameraNumber = cameraNumber;
+        this.ResWidth = width;
+        this.ResHeight = height;
+        this.FPS = fps;
+        this.Exposure = exposure;
+
+        // Initalize Camera Feed
+        this.thread = new Thread(() -> { //To add image processing, simply call a function based on the camera name condition
+            UsbCamera camera = CameraServer.getInstance().startAutomaticCapture(CameraName, CameraNumber);
+            camera.setResolution(ResWidth, ResHeight);
+            camera.setFPS(FPS);
             
-            CvSink cvSink = CameraServer.getInstance().getVideo();
-            CvSource outputStream = CameraServer.getInstance().putVideo("Camera0", RobotMap.cam0Width, RobotMap.cam0Height);
+            CvSink cvSink = CameraServer.getInstance().getVideo(); 
+            CvSource outputStream = CameraServer.getInstance().putVideo(CameraName, ResWidth, ResHeight);
             
             Mat source = new Mat();
             Mat output = new Mat();
@@ -31,9 +44,14 @@ public class Camera { //TODO MAKE WORK WITH A SECONDARY CAMERA AND USE THREAD FO
                 Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
                 outputStream.putFrame(output);
             }
-        }).start();
+        });
     }
+
+    public void start() {
+        thread.start();
+    }
+
     public void stop() {
-        
+        thread.interrupt();
     }
 }
