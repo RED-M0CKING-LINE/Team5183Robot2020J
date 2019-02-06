@@ -10,17 +10,19 @@ import edu.wpi.first.wpilibj.RobotState;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.cameraserver.CameraServer;
 
 import frc.robot.RobotMap;
-
+import frc.robot.functions.Xbox;
+import frc.robot.functions.DriveTrain;
 
 public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
-  Thread CameraSwitch = new Thread(() -> {
-    
-  });
+  //TODO MAKE A CAMERA SWITCHER
+  //Thread CameraSwitch = new Thread(() -> {});
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -44,7 +46,8 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("Teleop Auton", "Teleop");
     SmartDashboard.putData("Auton Chooser", m_chooser);
     
-    RobotMap.camera0.start();
+    //RobotMap.camera0.start();
+    //CameraServer.getInstance().startAutomaticCapture();
   }
 
   /**
@@ -70,7 +73,7 @@ public class Robot extends TimedRobot {
     switch (m_autoSelected) { //TODO WRITE THE AUTONOMOUS
       case "Teleop": // For operator control during the auton period
         while (RobotState.isAutonomous()) {
-          RobotMap.M.drive(RobotMap.ctrl.R_X_STICK, RobotMap.ctrl.L_Y_STICK, 1);
+          DriveTrain.drive(Xbox.R_X_STICK, Xbox.L_Y_STICK, 1);
         }
       case "AutonLeft":
         break;
@@ -83,13 +86,13 @@ public class Robot extends TimedRobot {
       default:
         break;
     }
-    RobotMap.M.stop(); // To stop the autonomous movement or teleop movement if it doesnt stop on its own. Prevents a period of uncontrollable movement.
+    DriveTrain.stop(); // To stop the autonomous movement or teleop movement if it doesnt stop on its own. Prevents a period of uncontrollable movement.
     //TODO FIGURE OUT THE LAG AND SEE HOW MUCH AN ISSUE THE STOP FUNCTION CAUSES AND WHETHER IT IS NEEDED.
   }
 
   @Override
   public void teleopPeriodic() {
-    RobotMap.M.drive(RobotMap.ctrl.R_X_STICK, RobotMap.ctrl.L_Y_STICK, 1);
+    DriveTrain.drive(Xbox.R_X_STICK, Xbox.L_Y_STICK, 1);
   }
 
   @Override

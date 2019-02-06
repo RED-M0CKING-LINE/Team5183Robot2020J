@@ -6,19 +6,19 @@ import frc.robot.RobotMap;
 
 public class DriveTrain {
 
-    public static DifferentialDrive DRIVE = new DifferentialDrive(RobotMap.MOTORS_L, RobotMap.MOTORS_R);
+	private static DifferentialDrive DRIVE = new DifferentialDrive(RobotMap.MOTORS_L, RobotMap.MOTORS_R);
 	
 	/** For using the drive train.
 	 * @param x is rawAxis 4, the Right Stick's X-Axis controller input
 	 * @param z is rawAxis 1, the Left Stick's Y-Axis controller input
 	 * @param mode int that determines the mode of the drive train movement. 1=Exponential 2=Squared 3=Linear
 	 */
-	public void drive(double x, double z, int mode) {
+	public static void drive(double x, double z, int mode) {
 		double base = 2.0; // Determinate for the aggression of the drive curve in the condition where mode == 1
-		double max = 0; // This Determines the max output value in the condition where mode == 1
+		double max = 1; // This Determines the max output value in the condition where mode == 1
 		
 		if(mode == 1) { // Provides exponential movement for the drive train
-			DRIVE.arcadeDrive(-1*((java.lang.Math.pow(base, x))-(1.0 + ( 1 - max))), java.lang.Math.pow(base, z)-(1.0 +(1 - max)));
+			DRIVE.arcadeDrive(-1*((java.lang.Math.pow(base, x)-(1.0 + (1 - max)))), java.lang.Math.pow(base, z)-(1.0 + (1 - max)));
 		} else if(mode == 2) { // Provides Squared Input movement for the drive train
 			DRIVE.arcadeDrive(x, z, true);
 		} else if(mode == 3) { // Provides Linear Movement of the drive train
@@ -31,7 +31,7 @@ public class DriveTrain {
 	 * @param right - sets to move the right side motors
 	 * @param time - sets amount of wait time in seconds
 	 */
-	public void move(double left, double right) {
+	public static void move(double left, double right) {
 		RobotMap.MOTORS_L.set(left);
 		RobotMap.MOTORS_R.set(right);
 	}
@@ -42,7 +42,7 @@ public class DriveTrain {
 	 * @param angle - what angle the robot should stop at
 	 * @param clock - "c" or "cc". 'c' for clockwise or 'cc' for counter-clockwise
 	 */
-	public void turn(double speed, double angle, String clock) {
+	public static void turn(double speed, double angle, String clock) {
 		stop();
 		if(clock == "c") {
 			RobotMap.MOTORS_L.set(speed);
@@ -57,7 +57,7 @@ public class DriveTrain {
 	}
 	
 	/* This is to stop the robot in its tracks */
-	public void stop() {
+	public static void stop() {
 		RobotMap.MOTORS_L.set(0);
 		RobotMap.MOTORS_R.set(0);
 	}

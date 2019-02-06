@@ -24,16 +24,6 @@
               "Visuals/Show tick marks": false
             }
           },
-          "6,0": {
-            "size": [
-              3,
-              1
-            ],
-            "content": {
-              "_type": "Basic FMS Info",
-              "_title": "Basic FMS Info"
-            }
-          },
           "9,0": {
             "size": [
               1,
@@ -76,6 +66,17 @@
               "Visuals/Starting angle": 180.0,
               "Visuals/Show tick mark ring": true
             }
+          },
+          "0,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Auton Chooser",
+              "_title": "Auton Chooser"
+            }
           }
         }
       }
@@ -89,7 +90,50 @@
         "showGrid": true,
         "hgap": 16.0,
         "vgap": 16.0,
-        "tiles": {}
+        "tiles": {
+          "4,0": {
+            "size": [
+              4,
+              4
+            ],
+            "content": {
+              "_type": "Camera Stream",
+              "_source0": "camera_server://Camera0",
+              "_title": "Camera0",
+              "Crosshair/Show crosshair": true,
+              "Crosshair/Crosshair color": "#FFFFFFFF",
+              "Controls/Show controls": false,
+              "Controls/Rotation": "NONE",
+              "compression": 0.0,
+              "fps": -1,
+              "imageWidth": -1,
+              "imageHeight": -1
+            }
+          },
+          "0,0": {
+            "size": [
+              2,
+              4
+            ],
+            "content": {
+              "_type": "Subsystem Layout",
+              "_source0": "network_table:///LiveWindow/Ungrouped",
+              "_title": "Ungrouped",
+              "Layout/Label position": "BOTTOM",
+              "_children": []
+            }
+          },
+          "8,0": {
+            "size": [
+              3,
+              1
+            ],
+            "content": {
+              "_type": "Basic FMS Info",
+              "_title": "Basic FMS Info"
+            }
+          }
+        }
       }
     }
   ],

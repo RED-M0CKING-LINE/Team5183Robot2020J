@@ -4,9 +4,9 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 public class Xbox {
-    private XboxController ctrl = new XboxController(0);
+    private static XboxController ctrl = new XboxController(0);
 	
-    public double 
+    public static double 
     L_X_STICK = ctrl.getRawAxis(0), // Left stick horizontal
     L_Y_STICK = ctrl.getRawAxis(1), // Left stick vertical
     L_TRIG = ctrl.getRawAxis(2), // Left trigger
@@ -14,7 +14,7 @@ public class Xbox {
     R_X_STICK = ctrl.getRawAxis(4), // Right stick horizontal
     R_Y_STICK = ctrl.getRawAxis(5); // Right stick vertical
 
-    public boolean 
+    public static boolean 
     getAState = ctrl.getAButton(),
     getBState = ctrl.getBButton(),
     getXState = ctrl.getXButton(),
