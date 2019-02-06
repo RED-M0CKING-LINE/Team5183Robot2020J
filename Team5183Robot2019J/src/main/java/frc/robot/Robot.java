@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.RobotState;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-//import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cameraserver.CameraServer;
 
 import frc.robot.RobotMap;
 import frc.robot.functions.Xbox;
@@ -50,7 +50,7 @@ public class Robot extends TimedRobot {
     this.ctrl = new Xbox(0);
 
     //RobotMap.camera0.start();
-    //CameraServer.getInstance().startAutomaticCapture();
+    CameraServer.getInstance().startAutomaticCapture();
   }
 
   /**
