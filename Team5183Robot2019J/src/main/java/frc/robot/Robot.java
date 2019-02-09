@@ -19,7 +19,7 @@ import frc.robot.functions.DriveTrain;
 public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
-  private Xbox ctrl;
+  private Xbox ctrl = new Xbox(0);
 
   //TODO MAKE A CAMERA SWITCHER
   //Thread CameraSwitch = new Thread(() -> {});
@@ -46,11 +46,9 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("No Auton", "AutonNone");
     m_chooser.addOption("Teleop Auton", "Teleop");
     SmartDashboard.putData("Auton Chooser", m_chooser);
-    
-    this.ctrl = new Xbox(0);
 
     //RobotMap.camera0.start();
-    CameraServer.getInstance().startAutomaticCapture();
+    //CameraServer.getInstance().startAutomaticCapture();
   }
 
   /**
@@ -95,7 +93,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    DriveTrain.drive(ctrl.R_X_STICK, ctrl.L_Y_STICK, 1);
+    DriveTrain.drive(ctrl.getAxis(ctrl.R_X_STICK), ctrl.getAxis(ctrl.L_Y_STICK), 1);
   }
 
   @Override

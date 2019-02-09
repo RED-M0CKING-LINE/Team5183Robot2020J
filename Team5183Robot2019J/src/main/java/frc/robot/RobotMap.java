@@ -29,6 +29,4 @@ public class RobotMap {
 
 	// Start Camera Stream Systems
 	//public static Camera camera0 = new Camera("Camera0", 0 , cam0Width, cam0Height, cam0FPS, cam0Exposure);
-
-	// Static Function Declarations
 }
