@@ -5,36 +5,24 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 public class Xbox {
     XboxController ctrl;
-    public boolean getAState, getBState, getXState, getYState, getBackState, getStartState, getLBumperState, getRBumperState;
 
     public Xbox(int port) {
         this.ctrl = new XboxController(port);
-        getAState = ctrl.getAButton();
-        getBState = ctrl.getBButton();
-        getXState = ctrl.getXButton();
-        getYState = ctrl.getYButton();
-        getBackState = ctrl.getBackButton();
-        getStartState = ctrl.getStartButton();
-        getLBumperState = ctrl.getBumper(Hand.kLeft);
-        getRBumperState = ctrl.getBumper(Hand.kRight);
     }
     
-    public int
-    L_Y_STICK = 1,
-    R_X_STICK = 4;
+    public boolean getAState() {return ctrl.getAButton();}
+    public boolean getBState() {return ctrl.getBButton();}
+    public boolean getXState() {return ctrl.getXButton();}
+    public boolean getYState() {return ctrl.getYButton();}
+    public boolean getBackState() {return ctrl.getBackButton();}
+    public boolean getStartState() {return ctrl.getStartButton();}
+    public boolean getLBumperState() {return ctrl.getBumper(Hand.kLeft);}
+    public boolean getRBumperState() {return ctrl.getBumper(Hand.kRight);}
+    public double L_X_STICK() {return ctrl.getRawAxis(0);} // Left stick horizontal
+    public double L_Y_STICK() {return ctrl.getRawAxis(1);} // Left stick vertical
+    public double L_TRIG() {return ctrl.getRawAxis(2);} // Left trigger
+    public double R_TRIG() {return ctrl.getRawAxis(3);} // Right trigger
+    public double R_X_STICK() {return ctrl.getRawAxis(4);} // Right stick horizontal
+    public double R_Y_STICK() {return ctrl.getRawAxis(5);} // Right stick vertical
 
-
-    /**
-    public double 
-    L_X_STICK = ctrl.getRawAxis(0), // Left stick horizontal
-    L_Y_STICK = ctrl.getRawAxis(1), // Left stick vertical
-    L_TRIG = ctrl.getRawAxis(2), // Left trigger
-    R_TRIG = ctrl.getRawAxis(3), // Right trigger
-    R_X_STICK = ctrl.getRawAxis(4), // Right stick horizontal
-    R_Y_STICK = ctrl.getRawAxis(5); // Right stick vertical */
-
-    public double getAxis(int axis) {
-        return ctrl.getRawAxis(axis);
-    }
-    
 }

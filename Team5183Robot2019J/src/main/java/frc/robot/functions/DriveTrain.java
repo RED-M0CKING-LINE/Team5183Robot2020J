@@ -15,10 +15,8 @@ public class DriveTrain {
 	 */
 	public static void drive(double x, double z, int mode) {
 		double base = 2.0; // Determinate for the aggression of the drive curve in the condition where mode == 1
-		double max = 1; // This Determines the max output value in the condition where mode == 1
-		
 		if(mode == 1) { // Provides exponential movement for the drive train
-			DRIVE.arcadeDrive(-1*((java.lang.Math.pow(base, x)-(1.0 + (1 - max)))), java.lang.Math.pow(base, z)-(1.0 + (1 - max)));
+			DRIVE.arcadeDrive((-1*(java.lang.Math.pow(base, x)-0.3)), java.lang.Math.pow(base, z)-0.3);
 		} else if(mode == 2) { // Provides Squared Input movement for the drive train
 			DRIVE.arcadeDrive(x, z, true);
 		} else if(mode == 3) { // Provides Linear Movement of the drive train
