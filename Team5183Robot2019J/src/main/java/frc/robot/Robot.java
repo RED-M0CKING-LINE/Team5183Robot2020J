@@ -7,7 +7,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.cameraserver.CameraServer;
+//import edu.wpi.first.cameraserver.CameraServer;
 
 import frc.robot.RobotMap;
 import frc.robot.functions.Xbox;
@@ -36,18 +36,16 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {}
 
   @Override
-  public void autonomousInit() {}
+  public void autonomousInit() {DriveTrain.driveExp(ctrl.L_Y_STICK(), ctrl.R_X_STICK());} // only to get that extra little bit of movement time :thumbs_up:
 
   @Override
   public void autonomousPeriodic() {
-    DriveTrain.drive(ctrl.L_Y_STICK(), ctrl.R_X_STICK(), 3);
+    DriveTrain.driveExp(ctrl.L_Y_STICK(), ctrl.R_X_STICK());
     //TODO IS A STOP FUNCTION NEEDED?
   }
 
   @Override
-  public void teleopPeriodic() {
-    DriveTrain.drive(ctrl.L_Y_STICK(), ctrl.R_X_STICK(), 2);
-  }
+  public void teleopPeriodic() {DriveTrain.driveExp(ctrl.L_Y_STICK(), ctrl.R_X_STICK());}
 
   @Override
   public void testPeriodic() {}

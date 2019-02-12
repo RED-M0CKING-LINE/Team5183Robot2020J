@@ -8,22 +8,24 @@ public class DriveTrain {
 
 	private static DifferentialDrive DRIVE = new DifferentialDrive(RobotMap.MOTORS_L, RobotMap.MOTORS_R);
 	
-	/** For using the drive train.
-	 * @param x is rawAxis 4, the Right Stick's X-Axis controller input
-	 * @param z is rawAxis 1, the Left Stick's Y-Axis controller input
-	 * @param mode int that determines the mode of the drive train movement. 1=Exponential 2=Squared 3=Linear
+	/** For Exponential Output Control of the Drive Train.
+	 * @param x Forward/Backward Movement. rawAxis 4 = Right Stick's X-Axis
+	 * @param z Rotational Movement. rawAxis 1 = Left Stick's Y-Axis
 	 */
-	public static void drive(double x, double z, int mode) {
-		double base = 2.0; // Determinate for the aggression of the drive curve in the condition where mode == 1
-		if(mode == 1) { // Provides exponential movement for the drive train
-			DRIVE.arcadeDrive((-1*(java.lang.Math.pow(base, x)-0.3)), java.lang.Math.pow(base, z)-0.3);
-		} else if(mode == 2) { // Provides Squared Input movement for the drive train
-			DRIVE.arcadeDrive(x, z, true);
-		} else if(mode == 3) { // Provides Linear Movement of the drive train
-			DRIVE.arcadeDrive(x, z); 
-		}
+	public static void driveExp(double x, double z) { // cut only allow for values to the hundreth power to be passed to the motors, cut off the rest.
+		final double base = 2.0;
+		DRIVE.arcadeDrive(-1*(java.lang.Math.pow(base, x)-1), java.lang.Math.pow(base, z)-1);
 	}
 	
+	/** For Normal Output Control of the Drive Train. 
+	 * This is the control built into the WPILibJ libraries, either Linear, if is false, or a Quadratic curve if squared is true.
+	 * @param x Forward/Backward Movement. rawAxis 4 = Right Stick's X-Axis
+	 * @param z Rotational Movement. rawAxis 1 = Left Stick's Y-Axis
+	 */
+	public static void driveNormal(double x, double z, boolean squared) {
+		DRIVE.arcadeDrive(x, z, squared);
+	}
+
 	/* This is  command used to move the robot on a timer
 	 * @param left - sets to move the left side motors
 	 * @param right - sets to move the right side motors
