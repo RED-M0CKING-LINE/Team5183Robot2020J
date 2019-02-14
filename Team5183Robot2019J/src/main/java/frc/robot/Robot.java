@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 //import edu.wpi.first.cameraserver.CameraServer;
 
 import frc.robot.RobotMap;
-import frc.robot.functions.Xbox;
-import frc.robot.functions.DriveTrain;
+import frc.robot.subsystems.Xbox;
+import frc.robot.subsystems.DriveTrain;
 
 public class Robot extends TimedRobot {
   private Xbox ctrl = new Xbox(0);
