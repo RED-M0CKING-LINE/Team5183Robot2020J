@@ -27,7 +27,6 @@ public class Robot extends TimedRobot {
 		RobotMap.MOTORS_R.setSafetyEnabled(true);
 		RobotMap.MOTORS_L.setExpiration(0.3);
 		RobotMap.MOTORS_R.setExpiration(0.3);
-    RobotMap.MOTORS_L.setInverted(true);
     
     //CameraServer.getInstance().startAutomaticCapture();
   }
