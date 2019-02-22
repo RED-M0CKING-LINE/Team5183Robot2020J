@@ -13,8 +13,8 @@ public class DriveTrain {
 	 * @param z Rotational Movement. rawAxis 1 = Left Stick's Y-Axis
 	 */
 	public static void driveExp(double x, double z) { // cut only allow for values to the hundreth power to be passed to the motors, cut off the rest.
-		final double base = 2.0;
-		final double deadzone = 0.05;
+		final double base = 2.0, deadzone = 0.05;
+		
 		if(x > deadzone) {
 			x = -(java.lang.Math.pow(base, x)-1);
 		} else if(x < -deadzone) {
@@ -25,7 +25,7 @@ public class DriveTrain {
 		if(z > deadzone) {
 			z = java.lang.Math.pow(base, z)-1;
 		} else if(z < -deadzone) {
-			z = -(java.lang.Math.pow(base, - z)-1);
+			z = -000(java.lang.Math.pow(base, - z)-1);
 		} else {
 			z = 0;
 		}
