@@ -14,7 +14,7 @@ public class DriveTrain {
 	 */
 	public static void driveExp(double x, double z) { // cut only allow for values to the hundreth power to be passed to the motors, cut off the rest.
 		final double base = 2.0, deadzone = 0.05;
-		
+
 		if(x > deadzone) {
 			x = -(java.lang.Math.pow(base, x)-1);
 		} else if(x < -deadzone) {
@@ -31,7 +31,7 @@ public class DriveTrain {
 		}
 		DRIVE.arcadeDrive(x, z);
 	}
-	
+
 	/** For Normal Output Control of the Drive Train. 
 	 * This is the control built into the WPILibJ libraries, either Linear, if is false, or a Quadratic curve if squared is true.
 	 * @param x Forward/Backward Movement. rawAxis 4 = Right Stick's X-Axis
