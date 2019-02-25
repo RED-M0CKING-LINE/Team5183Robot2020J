@@ -25,7 +25,7 @@ public class DriveTrain {
 		if(z > deadzone) {
 			z = java.lang.Math.pow(base, z)-1;
 		} else if(z < -deadzone) {
-			z = -000(java.lang.Math.pow(base, - z)-1);
+			z = -(java.lang.Math.pow(base, - z)-1);
 		} else {
 			z = 0;
 		}
@@ -73,7 +73,7 @@ public class DriveTrain {
 	
 	/* This is to stop the robot in its tracks */
 	public static void stop() {
-		RobotMap.MOTORS_L.set(0);
-		RobotMap.MOTORS_R.set(0);
+		RobotMap.MOTORS_L.stopMotor();
+		RobotMap.MOTORS_R.stopMotor();
 	}
 }

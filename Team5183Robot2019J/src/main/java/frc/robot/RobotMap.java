@@ -8,8 +8,10 @@ public class RobotMap {
 
 	// Motors
 	public static Spark
-	MOTORS_L = new Spark(0), //Left side drive motors on channel 0
-	MOTORS_R = new Spark(1); //Right side drive motors on channel 1
+	MOTORS_L = new Spark(0), //Left side drive motors
+	MOTORS_R = new Spark(1), //Right side drive motors
+	INTAKE_L = new Spark(2), //Left side intake motor
+	INTAKE_R = new Spark(3); //Right side intake motor
 	
 	// Encoders
 	//TODO ADD GYRO AND THE FUNCTION TO CONTROL IT

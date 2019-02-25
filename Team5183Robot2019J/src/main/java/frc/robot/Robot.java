@@ -26,13 +26,20 @@ public class Robot extends TimedRobot {
 		RobotMap.MOTORS_L.setSafetyEnabled(true);
 		RobotMap.MOTORS_R.setSafetyEnabled(true);
 		RobotMap.MOTORS_L.setExpiration(0.3);
-		RobotMap.MOTORS_R.setExpiration(0.3);
+    RobotMap.MOTORS_R.setExpiration(0.3);
+    RobotMap.INTAKE_L.setExpiration(0.3);
+    RobotMap.INTAKE_R.setExpiration(0.3);
     
     //CameraServer.getInstance().startAutomaticCapture();
   }
 
   @Override
-  public void robotPeriodic() {}
+  public void robotPeriodic() {
+    RobotMap.MOTORS_L.check();
+    RobotMap.MOTORS_R.check();
+    RobotMap.INTAKE_L.check();
+    RobotMap.INTAKE_R.check();
+  }
 
   @Override
   public void autonomousInit() {DriveTrain.driveExp(ctrl.L_Y_STICK(), ctrl.R_X_STICK());} // only to get that extra little bit of movement time :thumbs_up:
