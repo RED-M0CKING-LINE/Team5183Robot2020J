@@ -7,11 +7,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-//import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cameraserver.CameraServer;
 
 import frc.robot.RobotMap;
 import frc.robot.subsystems.Xbox;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Intake;
 
 public class Robot extends TimedRobot {
   private Xbox ctrl = new Xbox(0);
@@ -27,8 +28,8 @@ public class Robot extends TimedRobot {
 		RobotMap.MOTORS_R.setSafetyEnabled(true);
 		RobotMap.MOTORS_L.setExpiration(0.3);
     RobotMap.MOTORS_R.setExpiration(0.3);
-    RobotMap.INTAKE_L.setExpiration(0.3);
-    RobotMap.INTAKE_R.setExpiration(0.3);
+    RobotMap.INTAKE_L.setExpiration(0.2);
+    RobotMap.INTAKE_R.setExpiration(0.2);
     
     //CameraServer.getInstance().startAutomaticCapture();
   }
@@ -51,7 +52,19 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void teleopPeriodic() {DriveTrain.driveExp(ctrl.L_Y_STICK(), ctrl.R_X_STICK());}
+  public void teleopInit() {}
+
+  @Override
+  public void teleopPeriodic() {
+    DriveTrain.driveExp(ctrl.L_Y_STICK(), ctrl.R_X_STICK());
+    if(ctrl.getAState()) {
+      Intake.in();
+    } else if (ctrl.getXState()) {
+      Intake.out();
+    } else {
+      Intake.stop();
+    }
+  }
 
   @Override
   public void testPeriodic() {}

@@ -1,18 +1,21 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Timer;
+
 import frc.robot.RobotMap;
 
 public class Intake {
-    private static final double inSpeed = 0.9, outSpeed = 1.0;
+    private static final double speed = 1;
+    private static Timer timer = new Timer();
 
     public static void in() {
-        RobotMap.INTAKE_L.set(inSpeed);
-        RobotMap.INTAKE_R.set(inSpeed);
+        RobotMap.INTAKE_L.set(0.4);
+        RobotMap.INTAKE_R.set(0.4);
     }
 
     public static void out() {
-        RobotMap.INTAKE_L.set(outSpeed);
-        RobotMap.INTAKE_R.set(outSpeed);
+        RobotMap.INTAKE_L.set(-speed);
+        RobotMap.INTAKE_R.set(-speed);
     }
 
     public static void stop() {
