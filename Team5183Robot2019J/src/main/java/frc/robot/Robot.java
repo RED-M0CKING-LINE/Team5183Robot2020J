@@ -31,7 +31,7 @@ public class Robot extends TimedRobot {
     RobotMap.INTAKE_L.setExpiration(0.2);
     RobotMap.INTAKE_R.setExpiration(0.2);
     
-    //CameraServer.getInstance().startAutomaticCapture();
+    CameraServer.getInstance().startAutomaticCapture();
   }
 
   @Override

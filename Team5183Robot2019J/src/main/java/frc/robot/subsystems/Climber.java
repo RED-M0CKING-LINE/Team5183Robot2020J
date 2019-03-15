@@ -6,29 +6,26 @@ import frc.robot.RobotMap;
 
 public class Climber {
     private boolean state;
-    private DoubleSolenoid liftR, liftL;
 
     public Climber() {
-        this.liftR = new DoubleSolenoid(0, 1);
-        this.liftL = new DoubleSolenoid(2, 3);
         this.state = false;
     }
 
     public void up() {
-        liftL.set(DoubleSolenoid.Value.kForward);
-        liftR.set(DoubleSolenoid.Value.kForward);
+        RobotMap.liftL.set(DoubleSolenoid.Value.kForward);
+        RobotMap.liftR.set(DoubleSolenoid.Value.kForward);
         state = true;
     }
 
     public void down() {
-        liftL.set(DoubleSolenoid.Value.kReverse);
-        liftR.set(DoubleSolenoid.Value.kReverse);
+        RobotMap.liftL.set(DoubleSolenoid.Value.kReverse);
+        RobotMap.liftR.set(DoubleSolenoid.Value.kReverse);
         state = false;
     }
 
     public void off() {
-        liftL.set(DoubleSolenoid.Value.kOff);
-        liftR.set(DoubleSolenoid.Value.kOff);
+        RobotMap.liftL.set(DoubleSolenoid.Value.kOff);
+        RobotMap.liftR.set(DoubleSolenoid.Value.kOff);
         state = false;
     }
 
