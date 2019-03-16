@@ -101,6 +101,18 @@
           }
         }
       }
+    },
+    {
+      "title": "ValueTable",
+      "autoPopulate": true,
+      "autoPopulatePrefix": "ValueTable",
+      "widgetPane": {
+        "gridSize": 32.0,
+        "showGrid": true,
+        "hgap": 16.0,
+        "vgap": 16.0,
+        "tiles": {}
+      }
     }
   ],
   "windowGeometry": {
