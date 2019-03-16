@@ -1,6 +1,13 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardComponent;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.RobotController;
+import edu.wpi.first.networktables.NetworkTableEntry;
+
+
 
 import frc.robot.subsystems.DriveTrain;
 
@@ -9,10 +16,21 @@ import frc.robot.subsystems.DriveTrain;
  */
 
 public class DriversStation {
-    //TODO make this the shuffleboard interface for the Drivers Station
+    static NetworkTableEntry BrownoutStatus;
+    
+    public static void initialize() {
+        BrownoutStatus = Shuffleboard.getTab("ValueTable")
+        .add("Browned Out?", false)
+        .withWidget("Boolean Box")
+        .getEntry();
+    }
 
     public static void update() {
         SmartDashboard.putNumber("Left-side Drive Speed", DriveTrain.getLeftSpeed());
         SmartDashboard.putNumber("Right-side Drive Speed", DriveTrain.getRightSpeed());
+        SmartDashboard.putBoolean("Browned Out?", RobotController.isBrownedOut()); // reports if the robot burned out
+
+        BrownoutStatus.setBoolean(RobotController.isBrownedOut());
+        Shuffleboard.update();
     }
 }

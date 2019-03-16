@@ -16,13 +16,13 @@ public class Xbox {
     public boolean getYState() {return ctrl.getYButton();}
     public boolean getBackState() {return ctrl.getBackButton();}
     public boolean getStartState() {return ctrl.getStartButton();}
-    public boolean getLBumperState() {return ctrl.getBumper(Hand.kLeft);}
-    public boolean getRBumperState() {return ctrl.getBumper(Hand.kRight);}
+    public boolean getLBumperState() {return ctrl.getBumper(Hand.kLeft);} // Left Bumper
+    public boolean getRBumperState() {return ctrl.getBumper(Hand.kRight);} // Right Bumper
     public double L_X_STICK() {return ctrl.getRawAxis(0);} // Left stick horizontal
-    public double L_Y_STICK() {return ctrl.getRawAxis(1);} // Left stick vertical
+    public double driveY() {return ctrl.getRawAxis(1);} // Left stick vertical
     public double L_TRIG() {return ctrl.getRawAxis(2);} // Left trigger
     public double R_TRIG() {return ctrl.getRawAxis(3);} // Right trigger
-    public double R_X_STICK() {return ctrl.getRawAxis(4);} // Right stick horizontal
+    public double driveX() {return ctrl.getRawAxis(4);} // Right stick horizontal
     public double R_Y_STICK() {return ctrl.getRawAxis(5);} // Right stick vertical
 
 }

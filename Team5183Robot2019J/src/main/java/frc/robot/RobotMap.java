@@ -2,11 +2,13 @@ package frc.robot;
 
 //import frc.robot.subsystems.Camera;
 import edu.wpi.first.wpilibj.Spark;
+import frc.robot.subsystems.Xbox;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 //import edu.wpi.first.wpilibj.Compressor;
 
 public class RobotMap {
-
+	public static Xbox ctrl = new Xbox(0);
+	 
 	// Motors
 	public static Spark
 	MOTORS_L = new Spark(0), //Left side drive motors
@@ -26,11 +28,11 @@ public class RobotMap {
 
 	// Camera Settings
 	public static final int
-	cam0Width = 320,
-	cam0Height = 240,
-	cam0FPS = 20,
-	cam0Compression = 30, // 30% 
-	cam0Exposure = 4; // These settings seemed to work best under use of one camera
+	cam0Width = 160,
+	cam0Height = 120,
+	cam0FPS = 8,
+	cam0Compression = 75, // 75% 
+	cam0Exposure = 5; // These settings seemed to work best under use of one camera
 
 	// Start Camera Stream Systems
 	//public static Camera camera0 = new Camera("Camera0", 0 , cam0Width, cam0Height, cam0FPS, cam0Exposure);

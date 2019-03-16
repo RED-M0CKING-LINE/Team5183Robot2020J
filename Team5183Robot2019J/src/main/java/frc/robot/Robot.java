@@ -4,18 +4,22 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
+
+// Robot Program Created By Ethan Ashley, AKA RedMockingLine on GitHub
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.cameraserver.CameraServer;
 
 import frc.robot.RobotMap;
 import frc.robot.subsystems.Xbox;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.DriversStation;
 import frc.robot.subsystems.Intake;
 
 public class Robot extends TimedRobot {
-  private Xbox ctrl = new Xbox(0);
+  //private Xbox ctrl = new Xbox(0);
 
   //TODO MAKE A CAMERA SWITCHER
   //Thread CameraSwitch = new Thread(() -> {});
@@ -40,14 +44,16 @@ public class Robot extends TimedRobot {
     RobotMap.MOTORS_R.check();
     RobotMap.INTAKE_L.check();
     RobotMap.INTAKE_R.check();
+
+    DriversStation.update();
   }
 
   @Override
-  public void autonomousInit() {DriveTrain.driveExp(ctrl.L_Y_STICK(), ctrl.R_X_STICK());} // only to get that extra little bit of movement time :thumbs_up:
+  public void autonomousInit() {DriveTrain.driveExp(ctrl.L_Y_STICK(), ctrl.R_X_STICK(), false);} // only to get that extra little bit of movement time :thumbs_up:
 
   @Override
   public void autonomousPeriodic() {
-    DriveTrain.driveExp(ctrl.L_Y_STICK(), ctrl.R_X_STICK());
+    DriveTrain.driveExp(ctrl.L_Y_STICK(), ctrl.R_X_STICK(), false);
     //TODO IS A STOP FUNCTION NEEDED?
   }
 
@@ -56,7 +62,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    DriveTrain.driveExp(ctrl.L_Y_STICK(), ctrl.R_X_STICK());
+    
+    
     if(ctrl.getAState()) {
       Intake.in();
     } else if (ctrl.getXState()) {

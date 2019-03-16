@@ -9,13 +9,36 @@
         "showGrid": true,
         "hgap": 2.0,
         "vgap": 2.0,
-        "tiles": {}
+        "tiles": {
+          "0,0": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Right-side Drive Speed",
+              "_title": "Right-side Drive Speed"
+            }
+          },
+          "2,0": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Left-side Drive Speed",
+              "_title": "Left-side Drive Speed"
+            }
+          }
+        }
       }
     },
     {
-      "title": "LiveWindow",
+      "title": "Drivers Station",
       "autoPopulate": false,
-      "autoPopulatePrefix": "LiveWindow/",
+      "autoPopulatePrefix": "DriversStation/",
       "widgetPane": {
         "gridSize": 32.0,
         "showGrid": true,
@@ -24,19 +47,19 @@
         "tiles": {
           "0,0": {
             "size": [
-              35,
+              24,
               19
             ],
             "content": {
               "_type": "Camera Stream",
               "_source0": "camera_server://USB Camera 0",
               "_title": "USB Camera 0",
-              "Crosshair/Show crosshair": true,
+              "Crosshair/Show crosshair": false,
               "Crosshair/Crosshair color": "#FFFFFFFF",
               "Controls/Show controls": true,
               "Controls/Rotation": "NONE",
-              "compression": 74.0,
-              "fps": 17,
+              "compression": 75.0,
+              "fps": 8,
               "imageWidth": 160,
               "imageHeight": 120
             }
@@ -50,6 +73,30 @@
               "_type": "Basic FMS Info",
               "_source0": "network_table:///FMSInfo",
               "_title": "FMSInfo"
+            }
+          },
+          "26,0": {
+            "size": [
+              9,
+              5
+            ],
+            "content": {
+              "_type": "Network Table Tree",
+              "_source0": "network_table:///SmartDashboard",
+              "_title": "/SmartDashboard"
+            }
+          },
+          "40,15": {
+            "size": [
+              6,
+              6
+            ],
+            "content": {
+              "_type": "Gyro",
+              "_title": "Gyro",
+              "Visuals/Major tick spacing": 45.0,
+              "Visuals/Starting angle": 180.0,
+              "Visuals/Show tick mark ring": true
             }
           }
         }

@@ -3,17 +3,26 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 import frc.robot.RobotMap;
+import frc.robot.subsystems.Xbox;
 
 public class DriveTrain {
+	private Xbox ctrl = new Xbox(0);
 
 	private static DifferentialDrive DRIVE = new DifferentialDrive(RobotMap.MOTORS_L, RobotMap.MOTORS_R);
 	
 	/** For Exponential Output Control of the Drive Train.
 	 * @param x Forward/Backward Movement. rawAxis 4 = Right Stick's X-Axis
 	 * @param z Rotational Movement. rawAxis 1 = Left Stick's Y-Axis
+	 * @param slow reduces speed to half if true, for more percise movements
 	 */
-	public static void driveExp(double x, double z) { // cut only allow for values to the hundreth power to be passed to the motors, cut off the rest.
-		final double base = 2.0, deadzone = 0.02;
+	public static void driveExp(double x, double z, boolean slow) { // cut only allow for values to the hundreth power to be passed to the motors, cut off the rest.
+		double base = 2.0, deadzone = 0.02;
+		
+		if(slow) {
+			deadzone = deadzone * 2;
+			x = x / 2;
+			z = z / 2;
+		}
 
 		if(x > deadzone) {
 			x = -(java.lang.Math.pow(base, x)-1);
@@ -83,5 +92,13 @@ public class DriveTrain {
 
 	public static double getRightSpeed() {
 		return RobotMap.MOTORS_R.get();
+	}
+
+	public void teleopDrive() {
+		if(ctrl.getRBumperState()) { // Drive function to determine half speed or full speed
+			DriveTrain.driveExp(RobotMap.ctrl.driveY(), RobotMap.ctrl.driveY(), true);
+		} else {
+			DriveTrain.driveExp(RobotMap.ctrl.driveY(), RobotMap.ctrl.driveX(), false);
+		}
 	}
 }
