@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.RobotMap;
 
 public class Climber {
+    /**
     private boolean state;
 
     public Climber() {
@@ -33,7 +34,9 @@ public class Climber {
      * 
      * @return boolean. True is up. False is down or off.
      */
+    /**
     public boolean state() {
         return state;
     }
+    */
 }

@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 public class Xbox {
-    XboxController ctrl;
+    private XboxController ctrl;
 
     public Xbox(int port) {
         this.ctrl = new XboxController(port);

@@ -2,12 +2,11 @@ package frc.robot;
 
 //import frc.robot.subsystems.Camera;
 import edu.wpi.first.wpilibj.Spark;
-import frc.robot.subsystems.Xbox;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+//import edu.wpi.first.wpilibj.DoubleSolenoid;
 //import edu.wpi.first.wpilibj.Compressor;
 
 public class RobotMap {
-	public static Xbox ctrl = new Xbox(0);
+	//public static Xbox ctrl = new Xbox(0);
 	 
 	// Motors
 	public static Spark
@@ -22,8 +21,8 @@ public class RobotMap {
 	// Servos
 	
 	// Pneumatics - give them some slack, their just kinda bloated
-	public static DoubleSolenoid liftL = new DoubleSolenoid(0, 1);
-	public static DoubleSolenoid liftR = new DoubleSolenoid(2, 3);
+	//public static DoubleSolenoid liftL = new DoubleSolenoid(0, 1);
+	//public static DoubleSolenoid liftR = new DoubleSolenoid(2, 3);
 	//public static Compressor compressor = new Compressor(1);
 
 	// Camera Settings

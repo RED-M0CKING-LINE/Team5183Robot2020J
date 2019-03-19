@@ -9,7 +9,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.cameraserver.CameraServer;
 
 import frc.robot.RobotMap;
@@ -19,7 +18,7 @@ import frc.robot.subsystems.DriversStation;
 import frc.robot.subsystems.Intake;
 
 public class Robot extends TimedRobot {
-  //private Xbox ctrl = new Xbox(0);
+  private static Xbox ctrl = new Xbox(0);
 
   //TODO MAKE A CAMERA SWITCHER
   //Thread CameraSwitch = new Thread(() -> {});
@@ -36,6 +35,8 @@ public class Robot extends TimedRobot {
     RobotMap.INTAKE_R.setExpiration(0.2);
     
     CameraServer.getInstance().startAutomaticCapture();
+
+    DriversStation.initialize();
   }
 
   @Override
@@ -49,20 +50,21 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void autonomousInit() {DriveTrain.driveExp(ctrl.L_Y_STICK(), ctrl.R_X_STICK(), false);} // only to get that extra little bit of movement time :thumbs_up:
+  public void autonomousInit() {DriveTrain.teleopDrive();} // only to get that extra little bit of movement time :thumbs_up:
 
   @Override
   public void autonomousPeriodic() {
-    DriveTrain.driveExp(ctrl.L_Y_STICK(), ctrl.R_X_STICK(), false);
-    //TODO IS A STOP FUNCTION NEEDED?
+    DriveTrain.teleopDrive();
   }
 
   @Override
-  public void teleopInit() {}
+  public void teleopInit() {
+    DriveTrain.stop();
+  }
 
   @Override
   public void teleopPeriodic() {
-    
+    DriveTrain.teleopDrive();
     
     if(ctrl.getAState()) {
       Intake.in();
@@ -71,6 +73,8 @@ public class Robot extends TimedRobot {
     } else {
       Intake.stop();
     }
+
+    DriveTrain.teleopDrive();
   }
 
   @Override
