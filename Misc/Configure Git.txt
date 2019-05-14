@@ -1,0 +1,16 @@
+The following commands are for configuring the git VCS with the help of VS Code.
+
+Run the following Commands
+
+	git config --global user.name "FIRST_NAME LAST_NAME"
+
+	git config --global user.email "MY_NAME@example.com"
+
+	git config --global credential.helper store
+
+Check your config with the following command
+	git config --list
+
+Then, next time you wish to push changes it will have you login, but this will only happen once. Login and you're done!
+
+You may need to initalize the repository you wish to use. Google it. "how to initalize git repositories"
