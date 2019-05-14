@@ -1,0 +1,16 @@
+Install libraries for ADIS16448:
+While in VS Code, do the folowing:
+CTRl + SHIFT + P
+Type in the box: >WPILib: Manage Vendor Libraries
+Choose "Install New Libraries (Online)"
+Paste the following link:
+	http://maven.highcurrent.io/vendordeps/ADIS16448.json
+
+
+Install Phoenix Framework:
+Get the installer from the internet and run it.
+Once complete, go into VS Code and do the following:
+CTRl + SHIFT + P
+Type in the box: >WPILib: Manage Vendor Libraries
+Choose "Install New Library (Offline)"
+Check the "CTRE-Phoenix" option and press ENTER
