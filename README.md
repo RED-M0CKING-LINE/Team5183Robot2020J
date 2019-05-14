@@ -3,7 +3,12 @@
 ## FRC Team 5183, 2019 Robot Program README
 
 Java Version: JDK11 <br/>
-IDE: FRC's version of VSCode
+IDE: FRC's version of VSCode <br/>
+Dependancies:
+- CTRE Phoenix Framework [link](http://www.ctr-electronics.com/hro.html#product_tabs_technical_resources)
+- ADIS16448 Drivers [link](https://github.com/juchong/ADIS16448-RoboRIO-Driver/tree/master/java)
+
+Note: Not all dependancies may be used in the code. The dependancies used could change at any time among this list.
 
 <br/>
 
