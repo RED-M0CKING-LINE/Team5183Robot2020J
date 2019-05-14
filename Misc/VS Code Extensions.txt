@@ -1,0 +1,8 @@
+Aside from the default extensions provided in the WPI version of VS Code, I have these ones in a personal install of VS Code
+
+- vscode-icons
+- Python
+- Project Manager
+- markdownlint
+- Markdown All in One
+- Code Runner
