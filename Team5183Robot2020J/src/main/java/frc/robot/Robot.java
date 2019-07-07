@@ -17,6 +17,7 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.DriversStation;
 import frc.robot.subsystems.Intake;
 
+/** This is where the main program flow is controled. */
 public class Robot extends TimedRobot {
   private static Xbox ctrl = new Xbox(0);
 
