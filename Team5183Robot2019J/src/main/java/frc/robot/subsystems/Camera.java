@@ -1,5 +1,3 @@
-/**
-
 package frc.robot.subsystems;
 
 import edu.wpi.first.cameraserver.CameraServer;
@@ -57,5 +55,3 @@ public class Camera {
         thread.interrupt();
     }
 }
-
-*/

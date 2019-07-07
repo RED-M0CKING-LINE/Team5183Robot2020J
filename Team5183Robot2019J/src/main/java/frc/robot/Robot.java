@@ -50,7 +50,7 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void autonomousInit() {DriveTrain.teleopDrive();} // only to get that extra little bit of movement time :thumbs_up:
+  public void autonomousInit() {DriveTrain.teleopDrive();} // only to get that extra little bit of movement time :thumbs_up: (20ms ish)
 
   @Override
   public void autonomousPeriodic() {
