@@ -19,7 +19,7 @@ Note: Not all dependancies may be used in the code. The dependancies used could 
 - Nicknames: M0ck, redmockingline, MockTeacher03, Mock (see the trend?)
 - Contact: ashleye5183@gmail.com or [RedMockingLine on GitHub](https://github.com/RED-M0CKING-LINE)
 - Side-Jobs: Strategy, Electrical
-- Notes: I am the only programmer for the team and I also manage this repo
+- Notes: I manage this repository and am the currently the only programmer for the team.
 
 #### Including Anyone Who Has Assisted Me With Issues at Competition or at Though The FRC Discord Server.
 
