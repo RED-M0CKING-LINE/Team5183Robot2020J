@@ -6,7 +6,7 @@ import frc.robot.RobotMap;
 
 public class DriveTrain {
 
-	private static Xbox ctrl = new Xbox(0);
+	private static Xbox ctrl = new Xbox(RobotMap.CONTROLLER1);
 
 	private static DifferentialDrive DRIVE = new DifferentialDrive(RobotMap.MOTORS_L, RobotMap.MOTORS_R);
 	

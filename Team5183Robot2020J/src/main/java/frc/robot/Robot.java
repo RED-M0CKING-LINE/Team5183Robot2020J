@@ -19,7 +19,7 @@ import frc.robot.subsystems.Intake;
 
 /** This is where the main program flow is controled. */
 public class Robot extends TimedRobot {
-  private static Xbox ctrl = new Xbox(0);
+  private static Xbox ctrl = new Xbox(RobotMap.CONTROLLER1);
 
   //TODO MAKE A CAMERA SWITCHER
   //Thread CameraSwitch = new Thread(() -> {});

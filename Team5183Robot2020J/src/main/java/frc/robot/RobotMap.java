@@ -38,4 +38,7 @@ public class RobotMap {
 	// Start Camera Stream Systems
 	//public static Camera camera0 = new Camera("Camera0", 0 , cam0Width, cam0Height, cam0FPS, cam0Exposure);
 	//TODO get the camera working maybe? XDD
+
+	// Controller Port Numbers
+	public static final int CONTROLLER1 = 0;
 }
