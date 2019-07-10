@@ -3,7 +3,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
-public class Xbox {
+public class Xbox {  //TODO rework this class to be accessable staticlly (like gyro class)
     private XboxController ctrl;
 
     public Xbox(int port) {

@@ -14,6 +14,8 @@ public class ADIS16448_Sensor {
         return IMU.getBarometricPressure();
     }
 
+    /** Axis is X, Y, or Z
+     * @return double of angle off of magnetic north in degrees. Returns 99999 if parameter is incorrect. */
     public static double getMag(char axis) {
         if(axis == 'X') {
             return IMU.getMagX();
@@ -27,7 +29,7 @@ public class ADIS16448_Sensor {
     }
 
         /** Axis is X, Y, or Z
-     * @return double for acceleration. Returns 77 if parameter is incorrect. */
+     * @return double for acceleration. Returns 99999 if parameter is incorrect. */
     public static double getAcceleration(char axis) {
         if(axis == 'X') {
             return IMU.getAccelX();
@@ -52,7 +54,7 @@ public class ADIS16448_Sensor {
         return IMU.getYaw();
     }
     /** Axis is X, Y, or Z
-     * @return double of the angle in degrees. Returns 77 if parameter is incorrect. */
+     * @return double of the angle in degrees. Returns 99999 if parameter is incorrect. */
     public static double getAngle(char axis) {
         if(axis == 'X') {
             return IMU.getAngleX();

@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 import frc.robot.RobotMap;
+import frc.robot.subsystems.ADIS16448_Sensor;
 
 public class DriveTrain {
 
@@ -39,14 +40,13 @@ public class DriveTrain {
 	 * @param x Forward/Backward Movement. rawAxis 4 = Right Stick's X-Axis
 	 * @param z Rotational Movement. rawAxis 1 = Left Stick's Y-Axis
 	 */
-	public static void driveNormal(double x, double z, boolean squared) {
+	public static void driveBasic(double x, double z, boolean squared) {
 		DRIVE.arcadeDrive(x, z, squared);
 	}
 
 	/* This is  command used to move the robot on a timer
 	 * @param left - sets to move the left side motors
 	 * @param right - sets to move the right side motors
-	 * @param time - sets amount of wait time in seconds
 	 */
 	public static void move(double left, double right) {
 		RobotMap.MOTORS_L.set(left);
@@ -56,20 +56,31 @@ public class DriveTrain {
 	//TODO SETUP THE GYRO FUNCTION
 	/* This command is for turning of the robot based off gyro measurements
 	 * @param speed - how fast the robot should move
-	 * @param angle - what angle the robot should stop at
-	 * @param clock - "c" or "cc". 'c' for clockwise or 'cc' for counter-clockwise
+	 * @param degrees - what angle the robot should stop at in degrees
+	 * @param clock - "c" or "cc". 'c' for clockwise or 'cc' for counter-clockwise (default)
 	 */
-	public static void turn(double speed, double angle, String clock) {
+	public static void turn(double speed, double degrees, String clock) {  //TODO TEST IF THIS WORKS
+		final char angle = 'Z';  //TODO while turning, start the motors fast but slow them down as they get closer to the desired angle. use a exponetial curve
 		stop();
+		//TODO add some time to wait here. half a second?
+		double angleOffset = ADIS16448_Sensor.getAngle(angle);
 		if(clock == "c") {
-			RobotMap.MOTORS_L.set(speed);
-			RobotMap.MOTORS_R.set(speed);
-		}else if(clock == "cc") {
-			RobotMap.MOTORS_L.set(-speed);
-			RobotMap.MOTORS_R.set(-speed);
-		}else { //DEFAULT COUNTER-CLOCKWISE
-			RobotMap.MOTORS_L.set(-speed);
-			RobotMap.MOTORS_R.set(-speed);
+			while(true) {
+				RobotMap.MOTORS_L.set(speed);
+				RobotMap.MOTORS_R.set(-speed);
+				if((ADIS16448_Sensor.getAngle(angle) - angleOffset) >= degrees) {
+					break;
+				}
+			}
+		stop();
+		} else {  // Counter-Clockwise is Default
+			while(true) {
+				RobotMap.MOTORS_L.set(-speed);
+				RobotMap.MOTORS_R.set(speed);
+				if((ADIS16448_Sensor.getAngle(angle) - angleOffset) >= degrees) {
+					break;
+				}
+			}
 		}
 	}
 	
