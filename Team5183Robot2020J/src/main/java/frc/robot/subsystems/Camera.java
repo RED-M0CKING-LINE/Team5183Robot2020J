@@ -26,8 +26,9 @@ public class Camera {
         this.ResHeight = height;
         this.FPS = fps;
         this.Exposure = exposure;
+    }
 
-        // Initalize Camera Feed
+    public void initalize() {
         this.thread = new Thread(() -> { //To add image processing, simply call a function based on the camera name condition
             UsbCamera camera = CameraServer.getInstance().startAutomaticCapture(CameraName, CameraNumber);
             camera.setResolution(ResWidth, ResHeight);

@@ -26,58 +26,54 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    RobotMap.MOTORS_L.enableDeadbandElimination(true);
-		RobotMap.MOTORS_R.enableDeadbandElimination(true);
-		RobotMap.MOTORS_L.setSafetyEnabled(true);
-		RobotMap.MOTORS_R.setSafetyEnabled(true);
-		RobotMap.MOTORS_L.setExpiration(0.3);
-    RobotMap.MOTORS_R.setExpiration(0.3);
-    RobotMap.INTAKE_L.setExpiration(0.2);
-    RobotMap.INTAKE_R.setExpiration(0.2);
-    
-    CameraServer.getInstance().startAutomaticCapture();
-
+    DriveTrain.inititalize();
+    Intake.initialize();
     DriversStation.initialize();
+    CameraServer.getInstance().startAutomaticCapture();
   }
 
   @Override
   public void robotPeriodic() {
-    RobotMap.MOTORS_L.check();
-    RobotMap.MOTORS_R.check();
-    RobotMap.INTAKE_L.check();
-    RobotMap.INTAKE_R.check();
-
+    DriveTrain.periodic();
+    Intake.periodic();
     DriversStation.update();
   }
 
   @Override
-  public void autonomousInit() {DriveTrain.teleopDrive();} // only to get that extra little bit of movement time :thumbs_up: (20ms ish)
+  public void autonomousInit() {operatorDrive();} // only to get that extra little bit of movement time :thumbs_up: (20ms ish)
 
   @Override
-  public void autonomousPeriodic() {
-    DriveTrain.teleopDrive();
-  }
+  public void autonomousPeriodic() {operatorDrive();}
 
   @Override
   public void teleopInit() {
-    DriveTrain.stop();
+    DriveTrain.stop();  // incase the robot crashes while switching, or takes too long, the bot will stop.
   }
 
   @Override
-  public void teleopPeriodic() {
+  public void teleopPeriodic() {operatorDrive();}
+
+  @Override
+  public void testInit() {}
+
+  @Override
+  public void testPeriodic() {}
+
+  /** This is the method that enables full bot operation.
+   * This exists to avoid duplicate code in teleopPeriodic and autonomousPeriodic
+   * because the 2019 season allowed manual control during the autonomous period */
+  private static void operatorDrive() {
     DriveTrain.teleopDrive();
     
     if(ctrl.getAState()) {
       Intake.in();
+      DriveTrain.teleopDrive();
     } else if (ctrl.getXState()) {
       Intake.out();
+      DriveTrain.teleopDrive();
     } else {
       Intake.stop();
+      DriveTrain.teleopDrive();
     }
-
-    DriveTrain.teleopDrive();
   }
-
-  @Override
-  public void testPeriodic() {}
 }

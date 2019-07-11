@@ -10,6 +10,22 @@ public class DriveTrain {
 	private static Xbox ctrl = new Xbox(RobotMap.CONTROLLER1);
 
 	private static DifferentialDrive DRIVE = new DifferentialDrive(RobotMap.MOTORS_L, RobotMap.MOTORS_R);
+
+	/** This is the drive train's initalization code that should be called at boot in the robotInit() function */
+	public static void inititalize() {
+		RobotMap.MOTORS_L.enableDeadbandElimination(true);
+		RobotMap.MOTORS_R.enableDeadbandElimination(true);
+		RobotMap.MOTORS_L.setSafetyEnabled(true);
+		RobotMap.MOTORS_R.setSafetyEnabled(true);
+		RobotMap.MOTORS_L.setExpiration(0.3);
+    	RobotMap.MOTORS_R.setExpiration(0.3);
+	}
+
+	/** This is the drive train's periodic code that should be called every 20ms-ish in the robotPeriodic() function */
+	public static void periodic() {
+		RobotMap.MOTORS_L.check();
+    	RobotMap.MOTORS_R.check();
+	}
 	
 	/** For Exponential Output Control of the Drive Train.
 	 * @param x Forward/Backward Movement. rawAxis 4 = Right Stick's X-Axis

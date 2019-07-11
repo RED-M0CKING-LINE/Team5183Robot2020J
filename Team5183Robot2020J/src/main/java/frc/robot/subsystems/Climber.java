@@ -9,6 +9,7 @@ public class Climber {
 
     public Climber() {
         this.state = false;
+        down();
     }
 
     public void up() {

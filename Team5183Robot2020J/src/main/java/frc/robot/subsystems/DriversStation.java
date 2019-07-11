@@ -7,16 +7,16 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.networktables.NetworkTableEntry;
 
-
-
 import frc.robot.subsystems.DriveTrain;
 
 
-/** A set of functions to interface with the Drivers Station, primarilly using Shuffleboard
- */
-
+/** A set of functions to interface with the Drivers Station, using Shuffleboard */
 public class DriversStation {
     static NetworkTableEntry BrownoutStatus;
+
+    public DriversStation() {
+        initialize();
+    }
     
     public static void initialize() {
         BrownoutStatus = Shuffleboard.getTab("ValueTable")
