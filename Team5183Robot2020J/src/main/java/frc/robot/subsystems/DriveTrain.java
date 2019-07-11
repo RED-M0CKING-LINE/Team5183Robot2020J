@@ -53,7 +53,6 @@ public class DriveTrain {
 		RobotMap.MOTORS_R.set(right);
 	}
 	
-	//TODO SETUP THE GYRO FUNCTION
 	/* This command is for turning of the robot based off gyro measurements
 	 * @param speed - how fast the robot should move
 	 * @param degrees - what angle the robot should stop at in degrees
@@ -72,7 +71,7 @@ public class DriveTrain {
 					break;
 				}
 			}
-		stop();
+			stop();
 		} else {  // Counter-Clockwise is Default
 			while(true) {
 				RobotMap.MOTORS_L.set(-speed);
@@ -81,6 +80,7 @@ public class DriveTrain {
 					break;
 				}
 			}
+			stop();
 		}
 	}
 	
