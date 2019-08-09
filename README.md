@@ -22,8 +22,8 @@ Note: Not all dependancies may be used in the code. The dependancies used could 
 
 #### 5183 Lead Programmer : Ethan A
 
-- Nicknames: M0ck, redmockingline, MockTeacher03, Mock (see the trend?)
-- Contact: ashleye5183@gmail.com or [RedMockingLine on GitHub](https://github.com/RED-M0CKING-LINE)
+- Nicknames: redmockingline, MockTeacher03, Mock, RED-M0CKING-LINE (see the trend?)
+- Contact: ashleye5183@gmail.com or [RED-M0CKING-LINE on GitHub](https://github.com/RED-M0CKING-LINE)
 - Side-Jobs: Strategy, Electrical
 - Notes: I manage this repository and am the currently the only programmer for the team.
 
