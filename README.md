@@ -14,7 +14,7 @@ Note: Not all dependancies may be used in the code. The dependancies used could 
 
 <br/>
 
-**Notice:** The master Branch is untested and unstable code. The chances of the code here working is slim. See the Stable branch for tested code that functions to the developers expectations and please clone from there.
+**Notice:** The master Branch is untested and unstable code. The chances of the code here working is slim. See the Stable branch for tested code that functions to the developer's expectations and please clone from there.
 
 <br/>
 
