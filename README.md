@@ -2,6 +2,8 @@
 
 ## FRC Team 5183, 2020 Robot Program README
 
+### Codebase Information:
+
 Java Version: JDK11 <br/>
 IDE: FRC's version of VSCode <br/>
 Dependancies:
@@ -12,12 +14,16 @@ Note: Not all dependancies may be used in the code. The dependancies used could 
 
 <br/>
 
+**Notice:** The master Branch is untested and unstable code. The chances of the code here working is slim. See the Stable branch for tested code that functions to the developer's expectations. Please clone the project from the Stable branch.
+
+<br/>
+
 ### Code Contributors:
 
 #### 5183 Lead Programmer : Ethan A
 
-- Nicknames: M0ck, redmockingline, MockTeacher03, Mock (see the trend?)
-- Contact: ashleye5183@gmail.com or [RedMockingLine on GitHub](https://github.com/RED-M0CKING-LINE)
+- Nicknames: redmockingline, MockTeacher03, Mock, RED-M0CKING-LINE (see the trend?)
+- Contact: ashleye5183@gmail.com or [RED-M0CKING-LINE on GitHub](https://github.com/RED-M0CKING-LINE)
 - Side-Jobs: Strategy, Electrical
 - Notes: I manage this repository and am the currently the only programmer for the team.
 
@@ -25,4 +31,4 @@ Note: Not all dependancies may be used in the code. The dependancies used could 
 
 <br/>
 
-Note: This code is licensed under the GNU General Public License v3.0
+This code is licensed under the GNU General Public License v3.0
