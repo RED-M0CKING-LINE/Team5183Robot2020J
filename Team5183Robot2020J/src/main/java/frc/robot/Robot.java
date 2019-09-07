@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
+/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -63,19 +63,23 @@ public class Robot extends TimedRobot {
      * This exists to avoid duplicate code in teleopPeriodic and autonomousPeriodic
      * because the 2019 season allowed manual control during the autonomous period */
     private static void operatorDrive() {
-        DriveTrain.teleopDrive();
+        DriveTrain.teleopDrive(ctrl.getRBumperState());
 
         if(RobotMap.INTAKE_ENABLED) {
             if(ctrl.getAState()) {
                 Intake.in();
-                DriveTrain.teleopDrive();
+                DriveTrain.teleopDrive(ctrl.getRBumperState());
             } else if (ctrl.getXState()) {
                 Intake.out();
-                DriveTrain.teleopDrive();
+                DriveTrain.teleopDrive(ctrl.getRBumperState());
             } else {
                 Intake.stop();
-                DriveTrain.teleopDrive();
+                DriveTrain.teleopDrive(ctrl.getRBumperState());
             }
+        }
+
+        if(RobotMap.CLIMBER_ENABLED) {
+
         }
     }
 }

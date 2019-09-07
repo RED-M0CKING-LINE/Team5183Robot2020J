@@ -114,8 +114,8 @@ public class DriveTrain {
         return RobotMap.MOTORS_R.get();
     }
 
-    public static void teleopDrive() {
-        if(ctrl.getRBumperState()) { // Drive function to determine half speed or full speed
+    public static void teleopDrive(boolean halfSpeed) {
+        if(halfSpeed) { // Drive function to determine half speed or full speed
             DriveTrain.driveExp((ctrl.driveY()/1.5), (ctrl.driveX()/1.65));
         } else {
             DriveTrain.driveExp(ctrl.driveY(), ctrl.driveX());

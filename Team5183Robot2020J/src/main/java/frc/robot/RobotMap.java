@@ -11,6 +11,9 @@ public class RobotMap {
     // Subsystem Settings
     public static final boolean
     INTAKE_ENABLED = false;
+
+    // Controller Port Number
+    public static final int CONTROLLER1 = 0;
     
     // Servos
 
@@ -23,13 +26,13 @@ public class RobotMap {
     
     // Encoders
 
-    // Sensors
-    public static ADIS16448_Sensor SENSOR_HAT = new ADIS16448_Sensor(); // This HAT has a many, many sensors on it
-    
     // Pneumatics - give them some slack, their just kinda bloated
     public static DoubleSolenoid CLIMB_L = new DoubleSolenoid(0, 1);
     public static DoubleSolenoid CLIMB_R = new DoubleSolenoid(2, 3);
     public static Compressor compressor = new Compressor(1);
+
+    // Sensors
+    public static ADIS16448_Sensor SENSOR_HAT = new ADIS16448_Sensor(); // This HAT has a many, many sensors on it
 
     // Camera Settings
     public static final int
@@ -42,7 +45,4 @@ public class RobotMap {
     // Start Camera Stream Systems
     //public static Camera camera0 = new Camera("Camera0", 0 , cam0Width, cam0Height, cam0FPS, cam0Exposure);
     //TODO get the camera working maybe? XDD
-
-    // Controller Port Numbers
-    public static final int CONTROLLER1 = 0;
 }
