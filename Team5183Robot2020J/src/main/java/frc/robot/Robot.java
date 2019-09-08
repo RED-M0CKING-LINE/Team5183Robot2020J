@@ -16,10 +16,13 @@ import frc.robot.subsystems.Xbox;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.DriversStation;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Climber;
 
 /** This is where the main program flow is controled. */
 public class Robot extends TimedRobot {
     private static Xbox ctrl = new Xbox(RobotMap.CONTROLLER1);
+
+    private static Climber Climber = new Climber();
 
     //TODO MAKE A CAMERA SWITCHER
     //Thread CameraSwitch = new Thread(() -> {});
@@ -79,7 +82,15 @@ public class Robot extends TimedRobot {
         }
 
         if(RobotMap.CLIMBER_ENABLED) {
-
+            if(ctrl.getStartState()) {
+                Climber.up();
+                DriveTrain.teleopDrive(ctrl.getRBumperState());
+            } else if(ctrl.getBackState()) {
+                Climber.down();
+                DriveTrain.teleopDrive(ctrl.getRBumperState());
+            } else {
+                DriveTrain.teleopDrive(ctrl.getRBumperState());
+            }
         }
     }
 }

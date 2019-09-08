@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.Compressor;
 public class RobotMap {
     // Subsystem Settings
     public static final boolean
-    INTAKE_ENABLED = false;
+    INTAKE_ENABLED = false,
+    CLIMBER_ENABLED = false;
 
     // Controller Port Number
     public static final int CONTROLLER1 = 0;
