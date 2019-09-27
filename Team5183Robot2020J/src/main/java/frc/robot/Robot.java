@@ -81,6 +81,8 @@ public class Robot extends TimedRobot {
             }
         }
 
+        DriveTrain.teleopDrive(ctrl.getRBumperState());
+        
         if(RobotMap.CLIMBER_ENABLED) {
             if(ctrl.getStartState()) {
                 Climber.up();
