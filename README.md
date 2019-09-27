@@ -9,7 +9,7 @@ IDE: FRC's version of VSCode <br/>
 Dependancies:
 - CTRE Phoenix Framework [link](http://www.ctr-electronics.com/hro.html#product_tabs_technical_resources)
 - ADIS16448 Drivers [link](https://github.com/juchong/ADIS16448-RoboRIO-Driver/tree/master/java)
-- REV Robotics API [link](https://www.revrobotics.com/content/sw/max/sdk/REVRobotics.json)
+- REV Robotics API [link](http://www.revrobotics.com/sparkmax-software/#java-api) or [json for online install](https://www.revrobotics.com/content/sw/max/sdk/REVRobotics.json)
 
 Note: Not all dependancies may be used in the code. The dependancies used could change at any time among this list.
 
