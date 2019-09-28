@@ -13,7 +13,7 @@ public class Xbox {  //TODO rework this class to be accessable staticlly (like g
     public boolean getAState() {return ctrl.getAButton();}
     public boolean getBState() {return ctrl.getBButton();}
     public boolean getXState() {return ctrl.getXButton();}
-    public boolean getYState() {return ctrl.getYButton();}
+    public boolean getYState() {return ctrl. getYButton();}
     public boolean getBackState() {return ctrl.getBackButton();}
     public boolean getStartState() {return ctrl.getStartButton();}
     public boolean getLBumperState() {return ctrl.getBumper(Hand.kLeft);} // Left Bumper
