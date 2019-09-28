@@ -28,6 +28,14 @@ Note: Not all dependancies may be used in the code. The dependancies used could 
 - Side-Jobs: Strategy, Electrical
 - Notes: I manage this repository and am the currently the only programmer for the team.
 
+
+#### 5183 Programer : Kane S
+
+- Nicknames: IrishAssassin, DarkSoul, AbstraktAssasin, (no trend :/)
+- Contact: kanesakcer@gmail.com or [IrishAssassin](https://github.com/IrishAssassin)
+
+<br/>
+
 #### Including Anyone Who Has Assisted Me With Issues at Competition or at Though The FRC Discord Server.
 
 <br/>
