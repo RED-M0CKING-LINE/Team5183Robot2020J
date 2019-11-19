@@ -29,6 +29,13 @@ Note: Not all dependancies may be used in the code. The dependancies used could 
 - Notes: I manage this repository and am the currently the only programmer for the team.
 
 
+#### 5183 Programmer :  Joe K
+
+- Nicknames: FiveKingdoms, FiveKings
+- Contact: joeykasprzak2005@gmail.com or [FIveKingdoms](https://github.com/RED-M0CKING-LINE)
+
+
+
 #### 5183 Programer : Kane S
 
 - Nicknames: IrishAssassin, DarkSoul, AbstraktAssasin, (no trend :/)
