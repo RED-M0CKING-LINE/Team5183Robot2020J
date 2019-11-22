@@ -32,19 +32,24 @@ public class DriveTrain {
      * @param z Rotational Movement. rawAxis 1 = Left Stick's Y-Axis
      */
     public static void driveExp(double x, double z) { // cut only allow for values to the hundreth power to be passed to the motors, cut off the rest.
-        double base = 2.0, deadzone = 0.02;
+        /** Settings
+            xExaggeration: How steep or aggressive the curve is. A higher value bends the curve more, or makes it steeper. For forward/backward speed.
+            yExaggeration: See above. For turning speed.
+            deadzone: this is a percentage value to avoid any movement when the robot should be stopped. Needed due to the joysticks hardware inaccuracies.
+        */
+        double xExaggeration = 2.0, yExaggeration = 1.0, deadzone = 0.02;
 
         if(x > deadzone) {
-            x = -(java.lang.Math.pow(base, x)-1);
+            x = ((-(java.lang.Math.pow(1+xExaggeration, x)-1))/exaggeration);
         } else if(x < -deadzone) {
-            x = (java.lang.Math.pow(base, -x)-1);
+            x = ((java.lang.Math.pow(1+xExaggeration, x)-1)/exaggeration);
         } else {
             x = 0;
         }
         if(z > deadzone) {
-            z = java.lang.Math.pow(base, z)-1;
+            z = ((java.lang.Math.pow(1+yExaggeration, z)-1)/exaggeration);
         } else if(z < -deadzone) {
-            z = -(java.lang.Math.pow(base, - z)-1);
+            z = ((-(java.lang.Math.pow(1+yExaggeration, z)-1))/exaggeration);
         } else {
             z = 0;
         }
