@@ -1,6 +1,6 @@
 package frc.robot;
 
-import frc.robot.subsystems.ADIS16448_Sensor;
+import frc.robot.hardware.ADIS16448_Sensor;
 //import frc.robot.subsystems.Camera;
 
 import edu.wpi.first.wpilibj.Spark;

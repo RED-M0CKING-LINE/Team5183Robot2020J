@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.cameraserver.CameraServer;
 
 import frc.robot.RobotMap;
-import frc.robot.subsystems.Xbox;
+import frc.robot.hardware.XboxCustom;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.DriversStation;
 import frc.robot.subsystems.Intake;
@@ -20,7 +20,7 @@ import frc.robot.subsystems.Climber;
 
 /** This is where the main program flow is controled. */
 public class Robot extends TimedRobot {
-    private static Xbox ctrl = new Xbox(RobotMap.CONTROLLER1);
+    private static XboxCustom ctrl = new XboxCustom(RobotMap.CONTROLLER1);
 
     private static Climber Climber = new Climber();
 

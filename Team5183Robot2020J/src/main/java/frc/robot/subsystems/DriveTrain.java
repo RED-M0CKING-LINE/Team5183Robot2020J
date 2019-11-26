@@ -2,12 +2,13 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
+import frc.robot.hardware.XboxCustom;
 import frc.robot.RobotMap;
-import frc.robot.subsystems.ADIS16448_Sensor;
+import frc.robot.hardware.ADIS16448_Sensor;
 
 public class DriveTrain {
 
-    private static Xbox ctrl = new Xbox(RobotMap.CONTROLLER1);
+    private static XboxCustom ctrl = new XboxCustom(RobotMap.CONTROLLER1);
 
     private static DifferentialDrive DRIVE = new DifferentialDrive(RobotMap.MOTORS_L, RobotMap.MOTORS_R);
 

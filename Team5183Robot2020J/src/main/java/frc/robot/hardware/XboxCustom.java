@@ -1,12 +1,12 @@
-package frc.robot.subsystems;
+package frc.robot.hardware;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
-public class Xbox {  //TODO rework this class to be accessable staticlly (like gyro class)
+public class XboxCustom {  //TODO rework this class to be accessable dynamically from RobotMap
     private XboxController ctrl;
 
-    public Xbox(int port) {
+    public XboxCustom(int port) {
         this.ctrl = new XboxController(port);
     }
     
