@@ -1,9 +1,5 @@
 package frc.robot.subsystems;
 
-import frc.robot.RobotMap;
+//import frc.robot.RobotMap;
 
-public class Lift {
-
-    
-
-}
+public class Lift {}
