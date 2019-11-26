@@ -40,16 +40,16 @@ public class DriveTrain {
         double xExaggeration = 2.0, yExaggeration = 1.0, deadzone = 0.02;
 
         if(x > deadzone) {
-            x = ((-(java.lang.Math.pow(1+xExaggeration, x)-1))/exaggeration);
+            x = ((-(java.lang.Math.pow(1+xExaggeration, x)-1))/xExaggeration);
         } else if(x < -deadzone) {
-            x = ((java.lang.Math.pow(1+xExaggeration, x)-1)/exaggeration);
+            x = ((java.lang.Math.pow(1+xExaggeration, x)-1)/xExaggeration);
         } else {
             x = 0;
         }
         if(z > deadzone) {
-            z = ((java.lang.Math.pow(1+yExaggeration, z)-1)/exaggeration);
+            z = ((java.lang.Math.pow(1+yExaggeration, z)-1)/yExaggeration);
         } else if(z < -deadzone) {
-            z = ((-(java.lang.Math.pow(1+yExaggeration, z)-1))/exaggeration);
+            z = ((-(java.lang.Math.pow(1+yExaggeration, z)-1))/yExaggeration);
         } else {
             z = 0;
         }
