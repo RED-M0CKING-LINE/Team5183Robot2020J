@@ -16,6 +16,6 @@ public class Curves {
 
     //TODO make the JavaDoc comment for this function
     public static double Sinusoidal(double x, double a, double c, double d) {  //TODO test if this curve works
-        return (a(Math.sin(x-c))+d);  //TODO make sure this is the right equation
+        return (a*(Math.sin(x-c))+d);  //TODO make sure this is the right equation
     }
 }
