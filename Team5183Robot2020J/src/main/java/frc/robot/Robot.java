@@ -14,7 +14,7 @@ import edu.wpi.first.cameraserver.CameraServer;
 import frc.robot.RobotMap;
 import frc.robot.hardware.XboxCustom;
 import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.DriversStation;
+import frc.robot.subsystems.DriverStation;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Climber;
 
@@ -31,7 +31,7 @@ public class Robot extends TimedRobot {
     public void robotInit() {
         DriveTrain.inititalize();
         Intake.initialize();
-        DriversStation.initialize();
+        DriverStation.initialize();
         CameraServer.getInstance().startAutomaticCapture();
     }
   
@@ -39,7 +39,7 @@ public class Robot extends TimedRobot {
     public void robotPeriodic() {
         DriveTrain.periodic();
         Intake.periodic();
-        DriversStation.update();
+        DriverStation.update();
     }
   
     @Override
