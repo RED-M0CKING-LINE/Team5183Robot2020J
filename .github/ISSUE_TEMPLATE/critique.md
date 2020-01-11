@@ -1,10 +1,10 @@
 ---
 name: Critique
-about: Describe this issue template's purpose here.
+about: A list of suggestions of how the program or code can be improved.
 title: CRITIQUE
-labels: ''
+labels: Critique
 assignees: ''
 
 ---
 
-
+**A list of suggestions of how the program or code can be improved. Please elaborate on each of your points and tell why**
