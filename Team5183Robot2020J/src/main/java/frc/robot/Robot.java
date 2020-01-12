@@ -20,12 +20,9 @@ import frc.robot.subsystems.Climber;
 
 /** This is where the main program flow is controled. */
 public class Robot extends TimedRobot {
-    private static XboxCustom ctrl = new XboxCustom(RobotMap.CONTROLLER1);
+    public static XboxCustom ctrl = new XboxCustom(RobotMap.CONTROLLER1);
 
     private static Climber Climber = new Climber();
-
-    //TODO MAKE A CAMERA SWITCHER
-    //Thread CameraSwitch = new Thread(() -> {});
 
     @Override
     public void robotInit() {

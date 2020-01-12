@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.networktables.NetworkTableEntry;
 
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.Robot;
 
 
 /** A set of functions to interface with the Drivers Station, using Shuffleboard */
@@ -28,6 +29,7 @@ public class DriverStation {
     public static void update() {
         SmartDashboard.putNumber("Left-side Drive Speed", DriveTrain.getLeftSpeed());
         SmartDashboard.putNumber("Right-side Drive Speed", DriveTrain.getRightSpeed());
+        SmartDashboard.putNumber("Primary controller port number", Robot.ctrl.getPort());
         SmartDashboard.putBoolean("Browned Out?", RobotController.isBrownedOut()); // reports if the robot burned out
 
         BrownoutStatus.setBoolean(RobotController.isBrownedOut());
