@@ -8,7 +8,7 @@ Java Version: JDK11 <br/>
 IDE: FRC's version of VSCode <br/>
 Dependancies:
 - CTRE Phoenix Framework [link](http://www.ctr-electronics.com/hro.html#product_tabs_technical_resources)
-- ADIS16448 Drivers [link](https://github.com/juchong/ADIS16448-RoboRIO-Driver/tree/master/java)
+- ADIS16448 Drivers [link](https://github.com/juchong/ADIS16448-RoboRIO-Driver/tree/master/java) of [json for online install](http://maven.highcurrent.io/vendordeps/ADIS16448.json)
 - REV Robotics API [link](http://www.revrobotics.com/sparkmax-software/#java-api) or [json for online install](https://www.revrobotics.com/content/sw/max/sdk/REVRobotics.json)
 
 Note: Not all dependancies may be used in the code. The dependancies used could change at any time among this list.
@@ -34,12 +34,6 @@ Note: Not all dependancies may be used in the code. The dependancies used could 
 - Nicknames: FiveKingdoms, FiveKings
 - Contact: joeykasprzak2005@gmail.com or [FIveKingdoms](https://github.com/RED-M0CKING-LINE)
 
-
-
-#### 5183 Programer : Kane S
-
-- Nicknames: IrishAssassin, DarkSoul, AbstraktAssasin, (no trend :/)
-- Contact: kanesakcer@gmail.com or [IrishAssassin](https://github.com/IrishAssassin)
 
 <br/>
 
