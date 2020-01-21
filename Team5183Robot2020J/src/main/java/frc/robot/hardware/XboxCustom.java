@@ -30,4 +30,23 @@ public class XboxCustom extends XboxController {
     public double driveX() {return super.getRawAxis(4);} // Right stick horizontal
     public double R_Y_STICK() {return super.getRawAxis(5);} // Right stick vertical
 
+    /**
+	 * Get the angle value based off the heading value, as indexed below for a D-Pad.
+	 * 
+	 * <pre>
+	 *      1
+	 *   8     2
+	 *  
+	 * 7    0    3
+	 *    
+	 *   6     4
+	 *      5
+     </pre>
+	 * @param directionValue 0 to 8
+     * @return angle based off of heading value.
+	 */
+    public int DPad(int directionValue) {return super.getPOV(directionValue);}
+    public int DPad() {return super.getPOV();} // Same as above but with a default input value of 1.
+
+
 }
