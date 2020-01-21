@@ -10,6 +10,7 @@ Dependancies:
 - CTRE Phoenix Framework [link](http://www.ctr-electronics.com/hro.html#product_tabs_technical_resources)
 - ADIS16448 Drivers [link](https://github.com/juchong/ADIS16448-RoboRIO-Driver/tree/master/java) of [json for online install](http://maven.highcurrent.io/vendordeps/ADIS16448.json)
 - REV Robotics API [link](http://www.revrobotics.com/sparkmax-software/#java-api) or [json for online install](https://www.revrobotics.com/content/sw/max/sdk/REVRobotics.json)
+- REV Robotics Color Sensor v3 [link](https://www.revrobotics.com/rev-31-1557/) or [json for onlone install](http://revrobotics.com/content/sw/color-sensor-v3/sdk/REVColorSensorV3.json)
 
 Note: Not all dependancies may be used in the code. The dependancies used could change at any time among this list.
 
