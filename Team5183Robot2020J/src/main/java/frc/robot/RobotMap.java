@@ -25,6 +25,12 @@ public class RobotMap {
     INTAKE_L = new Spark(2), //Left side intake motor
     INTAKE_R = new Spark(3); //Right side intake motor
     
+    public static int
+    driveMotorFrontRightID = 2,
+    driveMotorFrontLeftID = 3,
+    driveMotorBackRightID = 4,
+    driveMotorBackLeftID = 5;
+
     // Encoders
 
     // Pneumatics - give them some slack, their just kinda bloated

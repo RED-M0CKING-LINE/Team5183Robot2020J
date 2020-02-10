@@ -2,6 +2,13 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
+import com.ctre.phoenix.motorcontrol.FollowerType;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
+import com.ctre.phoenix.motorcontrol.can.TalonFXConfiguration;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
+
 import frc.robot.hardware.XboxCustom;
 import frc.robot.RobotMap;
 //import frc.robot.hardware.ADIS16448_Sensor;
@@ -9,17 +16,27 @@ import frc.robot.RobotMap;
 public class DriveTrain {
 
     private static XboxCustom ctrl = new XboxCustom(RobotMap.CONTROLLER1);
+    static TalonFX 
+    motorRightMaster = new TalonFX(RobotMap.driveMotorFrontRightID),
+    motorLeftMaster = new TalonFX(RobotMap.driveMotorFrontLeftID),
+    motorRightSlave = new TalonFX(RobotMap.driveMotorBackRightID),
+    motorLeftSlave = new TalonFX(RobotMap.driveMotorBackLeftID); // Master motors are front motors, Slaves are rear.
 
-    private static DifferentialDrive DRIVE = new DifferentialDrive(RobotMap.MOTORS_L, RobotMap.MOTORS_R);
+    private static DifferentialDrive DRIVE = new DifferentialDrive(DriveTrain.motorLeftMaster, DriveTrain.motorRightMaster);
 
     /** This is the drive train's initalization code that should be called at boot in the robotInit() function */
     public static void inititalize() {
-        RobotMap.MOTORS_L.enableDeadbandElimination(true);
-        RobotMap.MOTORS_R.enableDeadbandElimination(true);
-        RobotMap.MOTORS_L.setSafetyEnabled(true);
-        RobotMap.MOTORS_R.setSafetyEnabled(true);
-        RobotMap.MOTORS_L.setExpiration(0.3);
-        RobotMap.MOTORS_R.setExpiration(0.3);
+        DriveTrain.motorLeftMaster.setInverted(true);
+        
+        DriveTrain.motorLeftSlave.follow(DriveTrain.motorLeftMaster);
+        DriveTrain.motorRightSlave.follow(DriveTrain.motorRightMaster);
+
+        DriveTrain.motorLeftMaster.setNeutralMode(NeutralMode.Brake);
+        DriveTrain.motorRightMaster.setNeutralMode(NeutralMode.Brake);
+        DriveTrain.motorLeftSlave.setNeutralMode(NeutralMode.Coast);
+        DriveTrain.motorRightSlave.setNeutralMode(NeutralMode.Coast);
+
+        
     }
 
     /** This is the drive train's periodic code that should be called every 20ms-ish in the robotPeriodic() function */
@@ -113,11 +130,11 @@ public class DriveTrain {
     }
 
     public static double getLeftSpeed() {
-        return RobotMap.MOTORS_L.get();
+        return DriveTrain.motorLeftMaster.getMotorOutputPercent()
     }
 
     public static double getRightSpeed() {
-        return RobotMap.MOTORS_R.get();
+        return DriveTrain.motorRightMaster.getMotorOutputPercent()
     }
 
     public static void teleopDrive(boolean halfSpeed) {
