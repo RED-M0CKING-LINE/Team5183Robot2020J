@@ -34,7 +34,6 @@ public class Robot extends TimedRobot {
   
     @Override
     public void robotPeriodic() {
-        DriveTrain.periodic();
         Intake.periodic();
         DriverStation.update();
     }

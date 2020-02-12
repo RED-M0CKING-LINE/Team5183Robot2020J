@@ -2,12 +2,9 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
-import com.ctre.phoenix.motorcontrol.FollowerType;
+import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.ControlMode;
-
-import com.ctre.phoenix.motorcontrol.can.TalonFXConfiguration;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 import frc.robot.hardware.XboxCustom;
 import frc.robot.RobotMap;
@@ -16,34 +13,51 @@ import frc.robot.RobotMap;
 public class DriveTrain {
 
     private static XboxCustom ctrl = new XboxCustom(RobotMap.CONTROLLER1);
-    static TalonFX 
-    motorRightMaster = new TalonFX(RobotMap.driveMotorFrontRightID),
-    motorLeftMaster = new TalonFX(RobotMap.driveMotorFrontLeftID),
-    motorRightSlave = new TalonFX(RobotMap.driveMotorBackRightID),
-    motorLeftSlave = new TalonFX(RobotMap.driveMotorBackLeftID); // Master motors are front motors, Slaves are rear.
+    private static WPI_TalonFX 
+    motorRightMaster = new WPI_TalonFX(RobotMap.driveMotorFrontRightID),
+    motorLeftMaster = new WPI_TalonFX(RobotMap.driveMotorFrontLeftID),
+    motorRightSlave = new WPI_TalonFX(RobotMap.driveMotorBackRightID),
+    motorLeftSlave = new WPI_TalonFX(RobotMap.driveMotorBackLeftID); // Master motors are front motors, Slaves are rear.
 
     private static DifferentialDrive DRIVE = new DifferentialDrive(DriveTrain.motorLeftMaster, DriveTrain.motorRightMaster);
 
     /** This is the drive train's initalization code that should be called at boot in the robotInit() function */
     public static void inititalize() {
-        DriveTrain.motorLeftMaster.setInverted(true);
-        
+        // Designate slave controllers. These slaves will copy their masters.
         DriveTrain.motorLeftSlave.follow(DriveTrain.motorLeftMaster);
         DriveTrain.motorRightSlave.follow(DriveTrain.motorRightMaster);
 
+        // Invert left side motors. Ensure right is not inverted.
+        DriveTrain.motorLeftMaster.setInverted(true);
+        DriveTrain.motorLeftSlave.setInverted(InvertType.FollowMaster);
+        DriveTrain.motorRightMaster.setInverted(false);
+        DriveTrain.motorRightSlave.setInverted(InvertType.FollowMaster);
+
+        // Setting whether or not the motors work against movement of the bot to act as breaks when stopping.
         DriveTrain.motorLeftMaster.setNeutralMode(NeutralMode.Brake);
         DriveTrain.motorRightMaster.setNeutralMode(NeutralMode.Brake);
         DriveTrain.motorLeftSlave.setNeutralMode(NeutralMode.Coast);
         DriveTrain.motorRightSlave.setNeutralMode(NeutralMode.Coast);
 
-        
+        // Configuring how fast the robot will accelerate.
+        DriveTrain.motorLeftMaster.configOpenloopRamp(RobotMap.DRIVE_SPEED_RAMP);
+        DriveTrain.motorLeftMaster.configClosedloopRamp(RobotMap.DRIVE_SPEED_RAMP);
+        DriveTrain.motorLeftSlave.configOpenloopRamp(RobotMap.DRIVE_SPEED_RAMP);
+        DriveTrain.motorLeftSlave.configClosedloopRamp(RobotMap.DRIVE_SPEED_RAMP);
+        DriveTrain.motorRightMaster.configOpenloopRamp(RobotMap.DRIVE_SPEED_RAMP);
+        DriveTrain.motorRightMaster.configClosedloopRamp(RobotMap.DRIVE_SPEED_RAMP);
+        DriveTrain.motorRightSlave.configOpenloopRamp(RobotMap.DRIVE_SPEED_RAMP);
+        DriveTrain.motorRightSlave.configClosedloopRamp(RobotMap.DRIVE_SPEED_RAMP);
+
+        // Decreases power to extend battery life. Can be done manually if needed using motor.configVoltageCompSaturation(VOLTS)
+        DriveTrain.motorLeftMaster.enableVoltageCompensation(true);
+        DriveTrain.motorRightMaster.enableVoltageCompensation(true);
+        DriveTrain.motorLeftSlave.enableVoltageCompensation(true);
+        DriveTrain.motorRightSlave.enableVoltageCompensation(true);
     }
 
     /** This is the drive train's periodic code that should be called every 20ms-ish in the robotPeriodic() function */
-    public static void periodic() {
-        RobotMap.MOTORS_L.check();
-        RobotMap.MOTORS_R.check();
-    }
+//    public static void periodic() {} // Not Used
     
     /** For Exponential Output Control of the Drive Train.
      * @param x Forward/Backward Movement. rawAxis 4 = Right Stick's X-Axis
@@ -53,9 +67,9 @@ public class DriveTrain {
         /** Settings
             xExaggeration: How steep or aggressive the curve is. A higher value bends the curve more, or makes it steeper. For forward/backward speed.
             yExaggeration: See above. For turning speed.
-            deadzone: this is a percentage value to avoid any movement when the robot should be stopped. Needed due to the joysticks hardware inaccuracies.
+            deadzone: this is a percentage value to avoid any movement when the robot should be stopped. Needed due to the joysticks hardware inaccuracies. Also saves the motors from stalling and saves battery. Compared to input rather than output.
         */
-        double xExaggeration = 2.0, yExaggeration = 1.0, deadzone = 0.02;
+        double xExaggeration = 2.0, yExaggeration = 1.0, deadzone = 0.07;
 
         if(x > deadzone) {
             x = ((-(java.lang.Math.pow(1+xExaggeration, x)-1))/xExaggeration);
@@ -88,8 +102,8 @@ public class DriveTrain {
      * @param right - sets to move the right side motors
      */
     public static void move(double left, double right) {
-        RobotMap.MOTORS_L.set(left);
-        RobotMap.MOTORS_R.set(right);
+        DriveTrain.motorLeftMaster.set(left);
+        DriveTrain.motorRightMaster.set(right);
     }
     
     /* This command is for turning of the robot based off gyro measurements
@@ -125,16 +139,16 @@ public class DriveTrain {
     
     /* This is to stop the robot in its tracks */
     public static void stop() {
-        RobotMap.MOTORS_L.stopMotor();
-        RobotMap.MOTORS_R.stopMotor();
+        DriveTrain.motorLeftMaster.stopMotor();
+        DriveTrain.motorRightMaster.stopMotor();
     }
 
     public static double getLeftSpeed() {
-        return DriveTrain.motorLeftMaster.getMotorOutputPercent()
+        return DriveTrain.motorLeftMaster.getMotorOutputPercent();
     }
 
     public static double getRightSpeed() {
-        return DriveTrain.motorRightMaster.getMotorOutputPercent()
+        return DriveTrain.motorRightMaster.getMotorOutputPercent();
     }
 
     public static void teleopDrive(boolean halfSpeed) {

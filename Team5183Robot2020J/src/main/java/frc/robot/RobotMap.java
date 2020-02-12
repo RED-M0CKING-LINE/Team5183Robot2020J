@@ -25,6 +25,7 @@ public class RobotMap {
     INTAKE_L = new Spark(2), //Left side intake motor
     INTAKE_R = new Spark(3); //Right side intake motor
     
+    public static final double DRIVE_SPEED_RAMP = 0.2;
     public static int
     driveMotorFrontRightID = 2,
     driveMotorFrontLeftID = 3,
