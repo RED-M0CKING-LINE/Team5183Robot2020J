@@ -14,10 +14,10 @@ public class DriveTrain {
 
     private static XboxCustom ctrl = new XboxCustom(RobotMap.CONTROLLER1);
     private static WPI_TalonFX 
-    motorRightMaster = new WPI_TalonFX(RobotMap.driveMotorFrontRightID),
-    motorLeftMaster = new WPI_TalonFX(RobotMap.driveMotorFrontLeftID),
-    motorRightSlave = new WPI_TalonFX(RobotMap.driveMotorBackRightID),
-    motorLeftSlave = new WPI_TalonFX(RobotMap.driveMotorBackLeftID); // Master motors are front motors, Slaves are rear.
+    motorRightMaster = new WPI_TalonFX(RobotMap.driveMotorFrontRightCANID),
+    motorLeftMaster = new WPI_TalonFX(RobotMap.driveMotorFrontLeftCANID),
+    motorRightSlave = new WPI_TalonFX(RobotMap.driveMotorBackRightCANID),
+    motorLeftSlave = new WPI_TalonFX(RobotMap.driveMotorBackLeftCANID); // Master motors are front motors, Slaves are rear.
 
     private static DifferentialDrive DRIVE = new DifferentialDrive(DriveTrain.motorLeftMaster, DriveTrain.motorRightMaster);
 
@@ -32,6 +32,8 @@ public class DriveTrain {
         DriveTrain.motorLeftSlave.setInverted(InvertType.FollowMaster);
         DriveTrain.motorRightMaster.setInverted(false);
         DriveTrain.motorRightSlave.setInverted(InvertType.FollowMaster);
+        // Don't invert the sides again. Default is true, but we don't want that.
+        DriveTrain.DRIVE.setRightSideInverted(false);
 
         // Setting whether or not the motors work against movement of the bot to act as breaks when stopping.
         DriveTrain.motorLeftMaster.setNeutralMode(NeutralMode.Brake);
