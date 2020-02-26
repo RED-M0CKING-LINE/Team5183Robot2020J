@@ -5,6 +5,9 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.sensors.SensorInitializationStrategy;
+import com.ctre.phoenix.motorcontrol.can.TalonFXConfiguration;
+import com.ctre.phoenix.motorcontrol.MotorCommutation;
 
 import frc.robot.hardware.XboxCustom;
 import frc.robot.RobotMap;
@@ -23,6 +26,9 @@ public class DriveTrain {
 
     /** This is the drive train's initalization code that should be called at boot in the robotInit() function */
     public static void inititalize() {
+        // Don't invert the sides again. Default is true, but we don't want that.
+        DriveTrain.DRIVE.setRightSideInverted(false);
+
         // Designate slave controllers. These slaves will copy their masters.
         DriveTrain.motorLeftSlave.follow(DriveTrain.motorLeftMaster);
         DriveTrain.motorRightSlave.follow(DriveTrain.motorRightMaster);
@@ -32,8 +38,6 @@ public class DriveTrain {
         DriveTrain.motorLeftSlave.setInverted(InvertType.FollowMaster);
         DriveTrain.motorRightMaster.setInverted(false);
         DriveTrain.motorRightSlave.setInverted(InvertType.FollowMaster);
-        // Don't invert the sides again. Default is true, but we don't want that.
-        DriveTrain.DRIVE.setRightSideInverted(false);
 
         // Setting whether or not the motors work against movement of the bot to act as breaks when stopping.
         DriveTrain.motorLeftMaster.setNeutralMode(NeutralMode.Brake);
@@ -56,6 +60,24 @@ public class DriveTrain {
         DriveTrain.motorRightMaster.enableVoltageCompensation(true);
         DriveTrain.motorLeftSlave.enableVoltageCompensation(true);
         DriveTrain.motorRightSlave.enableVoltageCompensation(true);
+
+        // Sets encoders to 0 on boot
+        DriveTrain.motorLeftMaster.configIntegratedSensorInitializationStrategy(SensorInitializationStrategy.BootToZero);
+        DriveTrain.motorRightMaster.configIntegratedSensorInitializationStrategy(SensorInitializationStrategy.BootToZero);
+        DriveTrain.motorLeftSlave.configIntegratedSensorInitializationStrategy(SensorInitializationStrategy.BootToZero);
+        DriveTrain.motorRightSlave.configIntegratedSensorInitializationStrategy(SensorInitializationStrategy.BootToZero);
+
+        // Makes motors stop if they have not been updated in a set amout of time. AKA MOTOR SAFETY
+        MotorCommutation does something
+        DriveTrain.motorRightMaster.
+        DriveTrain.motorLeftSlave.
+        DriveTrain.motorRightSlave.
+
+        /* To copy and paste to save time cause im lazy
+        DriveTrain.motorLeftMaster.
+        DriveTrain.motorRightMaster.
+        DriveTrain.motorLeftSlave.
+        DriveTrain.motorRightSlave.*/
     }
 
     /** This is the drive train's periodic code that should be called every 20ms-ish in the robotPeriodic() function */
