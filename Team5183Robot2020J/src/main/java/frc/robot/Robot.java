@@ -9,6 +9,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 
 import frc.robot.RobotMap;
 import frc.robot.hardware.XboxCustom;
@@ -32,12 +33,15 @@ public class Robot extends TimedRobot {
   
     @Override
     public void autonomousInit() {
-
+        DriveTrain.move(.3, .3);
+        Timer.delay(1);
+        DriveTrain.stop();
+        
     } 
 
     @Override
     public void autonomousPeriodic() {
-        
+
     }
   
     @Override
@@ -53,4 +57,10 @@ public class Robot extends TimedRobot {
   
     @Override
     public void testPeriodic() {}
+
+    @Override
+    public void simulationInit() {}
+
+    @Override
+    public void simulationPeriodic() {}
 }
