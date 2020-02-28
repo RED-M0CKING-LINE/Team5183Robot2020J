@@ -68,10 +68,10 @@ public class DriveTrain {
         DriveTrain.motorRightSlave.configIntegratedSensorInitializationStrategy(SensorInitializationStrategy.BootToZero);
 
         // Makes motors stop if they have not been updated in a set amout of time. AKA MOTOR SAFETY
-        MotorCommutation does something
-        DriveTrain.motorRightMaster.
-        DriveTrain.motorLeftSlave.
-        DriveTrain.motorRightSlave.
+        DriveTrain.motorLeftMaster.setSafetyEnabled(true);
+        DriveTrain.motorRightMaster.setSafetyEnabled(true);
+        DriveTrain.motorLeftSlave.setSafetyEnabled(true);
+        DriveTrain.motorRightSlave.setSafetyEnabled(true);
 
         /* To copy and paste to save time cause im lazy
         DriveTrain.motorLeftMaster.
@@ -81,7 +81,12 @@ public class DriveTrain {
     }
 
     /** This is the drive train's periodic code that should be called every 20ms-ish in the robotPeriodic() function */
-//    public static void periodic() {} // Not Used
+    public static void periodic() {
+        DriveTrain.motorLeftMaster.feed();
+        DriveTrain.motorRightMaster.feed();
+        DriveTrain.motorLeftSlave.feed();
+        DriveTrain.motorRightSlave.feed();
+    }
     
     /** For Exponential Output Control of the Drive Train.
      * @param x Forward/Backward Movement. rawAxis 4 = Right Stick's X-Axis
