@@ -11,7 +11,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 
-import frc.robot.RobotMap;
 import frc.robot.hardware.XboxCustom;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.DriverStation;
@@ -19,6 +18,7 @@ import frc.robot.subsystems.DriverStation;
 /** This is where the main program flow is controled. */
 public class Robot extends TimedRobot {
     public static XboxCustom ctrl = new XboxCustom(RobotMap.CONTROLLER1);
+    private final Timer timer = new Timer();
 
     @Override
     public void robotInit() {
@@ -29,19 +29,23 @@ public class Robot extends TimedRobot {
     @Override
     public void robotPeriodic() {
         DriverStation.update();
+        DriveTrain.periodic();
     }
   
     @Override
     public void autonomousInit() {
-        DriveTrain.move(.3, .3);
-        Timer.delay(1);
-        DriveTrain.stop();
-        
+        timer.reset();
+        timer.start();
     } 
 
     @Override
     public void autonomousPeriodic() {
-
+        DriveTrain.periodic();
+        if(timer.get() < 1) {
+            DriveTrain.move(.3, .3);
+        } else {
+            DriveTrain.stop();
+        }
     }
   
     @Override
@@ -50,7 +54,10 @@ public class Robot extends TimedRobot {
     }
   
     @Override
-    public void teleopPeriodic() {DriveTrain.teleopDrive(ctrl.getRBumperState());}
+    public void teleopPeriodic() {
+        DriveTrain.teleopDrive(ctrl.getRBumperState());
+        DriveTrain.periodic();
+    }
   
     @Override
     public void testInit() {}
@@ -62,5 +69,7 @@ public class Robot extends TimedRobot {
     public void simulationInit() {}
 
     @Override
-    public void simulationPeriodic() {}
+    public void simulationPeriodic() {
+        DriveTrain.periodic();
+    }
 }
