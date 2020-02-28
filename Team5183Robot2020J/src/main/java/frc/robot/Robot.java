@@ -31,10 +31,14 @@ public class Robot extends TimedRobot {
     }
   
     @Override
-    public void autonomousInit() {} // only to get that extra little bit of movement time :thumbs_up: (20ms ish)
-  
+    public void autonomousInit() {
+
+    } 
+
     @Override
-    public void autonomousPeriodic() {}
+    public void autonomousPeriodic() {
+        
+    }
   
     @Override
     public void teleopInit() {
