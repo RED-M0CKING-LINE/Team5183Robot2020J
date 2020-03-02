@@ -24,6 +24,8 @@ public class DriverStation {
         .add("Browned Out?", false)
         .withWidget("Boolean Box")
         .getEntry();
+
+        //autoSelector = Shuffleboard.getTab("ValueTable")
     }
 
     public static void update() {

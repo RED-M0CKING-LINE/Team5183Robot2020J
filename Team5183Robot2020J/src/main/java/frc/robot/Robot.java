@@ -41,8 +41,8 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousPeriodic() {
         DriveTrain.periodic();
-        if(timer.get() < 1) {
-            DriveTrain.move(.3, .3);
+        if(timer.get() < 1.5) {
+            DriveTrain.move(-.3, -.3);
         } else {
             DriveTrain.stop();
         }

@@ -1,5 +1,7 @@
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
+
 public class RobotMap {
 
     // Controller Port Number
@@ -8,12 +10,13 @@ public class RobotMap {
     // Servos
 
     // Motors
-    public static final double DRIVE_SPEED_RAMP = 0.2;
+    public static final double DRIVE_SPEED_RAMP = 0.01;
     public static int
     driveMotorFrontRightCANID = 2,
     driveMotorFrontLeftCANID = 3,
     driveMotorBackRightCANID = 4,
     driveMotorBackLeftCANID = 5;
+    public static SupplyCurrentLimitConfiguration driveCurrentLimit = new SupplyCurrentLimitConfiguration(true, 30, 0 , 0.2);
 
     // Encoders
 

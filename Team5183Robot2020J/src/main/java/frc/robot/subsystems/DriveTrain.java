@@ -71,6 +71,12 @@ public class DriveTrain {
         DriveTrain.motorLeftSlave.setSafetyEnabled(true);
         DriveTrain.motorRightSlave.setSafetyEnabled(true);
 
+        // Limits how many Ampers the motors pull each
+        DriveTrain.motorLeftMaster.configSupplyCurrentLimit(RobotMap.driveCurrentLimit);
+        DriveTrain.motorRightMaster.configSupplyCurrentLimit(RobotMap.driveCurrentLimit);
+        DriveTrain.motorLeftSlave.configSupplyCurrentLimit(RobotMap.driveCurrentLimit);
+        DriveTrain.motorRightSlave.configSupplyCurrentLimit(RobotMap.driveCurrentLimit);
+
         /* To copy and paste to save time cause im lazy
         DriveTrain.motorLeftMaster.
         DriveTrain.motorRightMaster.
@@ -96,7 +102,7 @@ public class DriveTrain {
             yExaggeration: See above. For turning speed.
             deadzone: this is a percentage value to avoid any movement when the robot should be stopped. Needed due to the joysticks hardware inaccuracies. Also saves the motors from stalling and saves battery. Compared to input rather than output.
         */
-        double xExaggeration = 2.0, yExaggeration = 1.0, deadzone = 0.07;
+        double xExaggeration = 2.0, yExaggeration = 1.0, deadzone = 0.09;
 
         if(x > deadzone) {
             x = ((java.lang.Math.pow(1+xExaggeration, x)-1)/xExaggeration);
@@ -180,7 +186,7 @@ public class DriveTrain {
 
     public static void teleopDrive(boolean halfSpeed) {
         if(halfSpeed) { // Drive function to determine half speed or full speed
-            DriveTrain.driveExp((ctrl.driveY()/1.5), (ctrl.driveX()/1.65));
+            DriveTrain.driveExp((ctrl.driveY()*0.7), (ctrl.driveX()*0.6));
         } else {
             DriveTrain.driveExp(ctrl.driveY(), ctrl.driveX());
         }
