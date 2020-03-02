@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 // Robot Program Created By Ethan Ashley, AKA RedMockingLine on GitHub
+
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
