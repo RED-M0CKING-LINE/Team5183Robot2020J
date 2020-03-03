@@ -12,5 +12,6 @@
     "**/.settings": true,
     "**/.factorypath": true
   },
+  "git.confirmSync": false,
   "git.autofetch": true
 }
