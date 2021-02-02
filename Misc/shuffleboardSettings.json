@@ -69,7 +69,7 @@
         "hgap": 2.0,
         "vgap": 2.0,
         "tiles": {
-          "24,6": {
+          "0,0": {
             "size": [
               11,
               3
@@ -105,7 +105,7 @@
               "Visuals/Counter clockwise": false
             }
           },
-          "24,10": {
+          "12,0": {
             "size": [
               11,
               4
@@ -116,25 +116,6 @@
               "_title": "/SmartDashboard/Browned Out?",
               "Colors/Color when true": "#7CFC00FF",
               "Colors/Color when false": "#8B0000FF"
-            }
-          },
-          "0,0": {
-            "size": [
-              24,
-              17
-            ],
-            "content": {
-              "_type": "Camera Stream",
-              "_source0": "camera_server://rPi Camera 0",
-              "_title": "rPi Camera 0",
-              "Crosshair/Show crosshair": true,
-              "Crosshair/Crosshair color": "#FFFFFFFF",
-              "Controls/Show controls": true,
-              "Controls/Rotation": "NONE",
-              "compression": 49.0,
-              "fps": -1,
-              "imageWidth": -1,
-              "imageHeight": -1
             }
           }
         }
